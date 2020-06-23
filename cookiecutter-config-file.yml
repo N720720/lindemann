@@ -1,0 +1,10 @@
+# THis file contains values from Cookiecutter
+
+default_context:
+  project_name: "lindemann"
+  project_description: "lindemann is a python package to calculate the Lindemann index  of a lammps trajectory as well as the progression of the Lindemann index per frame of temperature ramps  for phase transition analysis."
+  organization: "N720720"
+  license: "MIT"
+  version: "0.1.0"
+  github_name: "N720720"
+  email: "s.thurm@protonmail.com"
