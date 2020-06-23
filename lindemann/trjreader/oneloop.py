@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import argparse
 import os
 import sys
 import time
@@ -12,16 +11,33 @@ from ovito.modifiers import SelectTypeModifier
 
 # In[2]:
 
+'''
+@nb.njit(fastmath=True, cache=True)
+def pdist_numba_py_sym(xs):
+    """Unvectorized Python."""
+    n, p = xs.shape
+    A = np.zeros((n, n))
+    for i in range(n):
+        for j in range(i+1, n):
+            d = 0.0
+            for k in range(p):
+                d += (xs[i, k] - xs[j, k])**2
+            A[i,j] = np.sqrt(d)
+    A += A.T
+    return A
+'''
 
-@nb.njit(fastmath=True)  # , cache=True)
+
+@nb.njit(fastmath=True)  # , cache=True) #(parallel=True)
 def lindemann_process_frames(frames, nframes, natoms):
-
+    # natoms = natoms
     natoms = len(frames[0])
     array_mean = np.zeros((natoms, natoms))
     array_var = np.zeros((natoms, natoms))
     array_distance = np.zeros((natoms, natoms))
     iframe = 1
     for coords in frames:
+        # print("processing frame {}/{}".format(iframe, nframes))
 
         n, p = coords.shape
         array_distance = np.zeros((n, n))
@@ -42,7 +58,9 @@ def lindemann_process_frames(frames, nframes, natoms):
                 mean = array_mean[i, j]
                 var = array_var[i, j]
                 delta = xn - mean
+                # update mean
                 array_mean[i, j] = mean + delta / iframe
+                # update variance
                 array_var[i, j] = var + delta * (xn - array_mean[i, j])
         iframe += 1
         if iframe > nframes:
@@ -94,10 +112,11 @@ def process_trjfile(trjfile, nframes=None):
     indices = np.mean(np.nanmean(indices, axis=1))
     print(indices)
 
-    return indices
+    return frames
 
 
 def main():
+    import argparse
 
     version = (
         "%(prog)s " + "<<VERSION>>" + "; updated at: " + "<<UPDATED-AT()>>"
@@ -126,3 +145,10 @@ if __name__ == "__main__":
     main()
     time_diff = time.time() - start
     print(time_diff)
+# In[ ]:
+
+
+# [0.01715329 0.0161475  0.0163233 ... 0.01074006 0.0164681  0.01535047]
+
+
+# In[ ]:
