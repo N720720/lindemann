@@ -39,6 +39,7 @@ rich = "^2.2.2"
 pre-commit = "^2.5.1"
 ovito = "^3.1.1"
 numba = "^0.50.0"
+psutil = "^5.7.0"
 
 [tool.poetry.dev-dependencies]
 darglint = "^1.4.1"
