@@ -1,8 +1,5 @@
 import os
-import sys
-import time
 
-import numba as nb
 import numpy as np
 from ovito.io import import_file
 from ovito.modifiers import SelectTypeModifier
