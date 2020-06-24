@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import os
 import sys
 import time
@@ -10,7 +8,7 @@ from ovito.io import import_file
 from ovito.modifiers import SelectTypeModifier
 
 
-def process_trjfile(trjfile, nframes=None):
+def frames(trjfile, nframes=None):
 
     """
     Get the frames from the lammps trajectory using ovito pipeline and import_file function.
@@ -29,14 +27,18 @@ def process_trjfile(trjfile, nframes=None):
     )
     data = pipeline.compute()
     num_particle = data.particles.count
-    position = np.zeros((num_frame, num_particle, 3))
-    for frame in range(num_frame):
+
+    # If no argument is given use all frames
+    if nframes is None:
+        nframes = num_frame
+    assert len(frames) >= nframes
+
+    # initialise array, could be problematic for big clusters and a lot of frames
+    position = np.zeros((nframes, num_particle, 3))
+
+    for frame in range(nframes):
         data = pipeline.compute(frame)
         position[frame, :, :] = np.array(data.particles["Position"])
     frames = position
-    # print(frames.shape)
-    if nframes is None:
-        nframes = len(frames)
-    assert len(frames) >= nframes
 
-    return frames, nframes
+    return frames
