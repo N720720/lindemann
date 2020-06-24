@@ -28,7 +28,8 @@ def frames(trjfile, nframes=None):
     # If no argument is given use all frames
     if nframes is None:
         nframes = num_frame
-    assert len(frames) >= nframes
+    # make sure nobody puts more frames then exists
+    assert num_frame >= nframes
 
     # initialise array, could be problematic for big clusters and a lot of frames
     position = np.zeros((nframes, num_particle, 3))
