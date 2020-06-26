@@ -10,9 +10,8 @@ from rich.console import Console
 
 from lindemann import __version__
 from lindemann.example import hello
-
-# from lindemann.index.per_trj import lindemann_process_frames
-# from lindemann.trjread import frames
+from lindemann.index import per_atoms, per_frames, per_trj
+from lindemann.trajectory import plt_plot, read, save
 
 app = typer.Typer(
     name="lindemann",
@@ -33,25 +32,26 @@ def version_callback(value: bool):
 
 @app.command(name="")
 def main(
-    trjfile: str = typer.Argument(
-        ...,
-        # help="The Lammps Trajectory File, you can give the filepath or the filename if you are in the directory",
-    ),
+    trjfile: str,
     trj: bool = typer.Option(
-        False, help="Calculates the Lindemann-Index for the Trajectory file"
+        False,
+        "-t",
+        help="Calculates the Lindemann-Index for the Trajectory file",
     ),
     frames: bool = typer.Option(
-        False, help="Calculates the Lindemann-Index for each frame."
+        False, "-f", help="Calculates the Lindemann-Index for each frame."
     ),
     atoms: bool = typer.Option(
         False,
+        "-a",
         help="Calculates the Lindemann-Index for each atom for each frame.",
     ),
     plot: bool = typer.Option(
-        False, help="Returns a plot Lindemann-Index vs. Frame."
+        False, "-p", help="Returns a plot Lindemann-Index vs. Frame."
     ),
     lammpstrj: bool = typer.Option(
         False,
+        "-l",
         help="Saves the individual Lindemann-Index of each Atom in a lammpstrj, so it can be viewed in Ovito.",
     ),
     version: bool = typer.Option(
@@ -67,6 +67,53 @@ def main(
     """
     lindemann is a python package to calculate the Lindemann index  of a lammps trajectory as well as the progression of the Lindemann index per frame of temperature ramps  for phase transition analysis.
     """
+    # frames = read.frames(trjfile)
+    # frames = lindemann.trajectory.read.frames(trjfile)
+    tjr_frames = read.frames(trjfile)
+
+    # print(trjfile)
+    # console.print(frames)
+
+    if trj:
+        pritn(per_trj.calculate(tjr_frames))
+        console.print(
+            f"[magenta]lindemann index for the Trajectory:[/] [bold blue]{per_trj.calculate(tjr_frames)}[/]"
+        )
+        raise typer.Exit()
+
+    if frames:
+        my_file_name = False
+        if my_file_name:
+            print("not implemented")
+        else:
+            filename = "linemann_per_frame.txt"
+        np.savetxt(filename, per_frames.calculate(tjr_frames))
+        console.print(
+            f"[magenta]lindemann index per frame saved as:[/] [bold blue]{filename}[/]"
+        )
+        raise typer.Exit()
+
+    if atoms:
+        filename = "linemann_per_atom.txt"
+        np.savetxt(filename, per_atoms.calculate(tjr_frames))
+        console.print(
+            f"[magenta]lindemann index per atoms saved as:[/] [bold blue]{filename}[/]"
+        )
+        raise typer.Exit()
+
+    if plot:
+        indices = per_frames.calculate(tjr_frames)
+
+        console.print(
+            f"[magenta]Saved file as:[/] [bold blue]{plt_plot.lindemann_vs_frames(indices)}[/]"
+        )
+        raise typer.Exit()
+
+    if lammpstrj:
+        indices_per_atom = per_atoms.calculate(tjr_frames)
+
+        console.print(f"[magenta]{save.to_lammps(trjfile,indices_per_atom)}[/]")
+        raise typer.Exit()
 
 
 '''

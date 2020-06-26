@@ -3,10 +3,11 @@ import numpy as np
 
 
 @nb.njit(fastmath=True)  # , cache=True)
-def lindemann_process_frames(frames: np.ndarray) -> np.ndarray:
+def lindemann_per_atom(frames: np.ndarray) -> np.ndarray:
 
+    """Calculates the lindemann index for """
     natoms = len(frames[0])
-    nframes = natoms
+    nframes = len(frames)
     array_mean = np.zeros((natoms, natoms))
     array_var = np.zeros((natoms, natoms))
     array_distance = np.zeros((natoms, natoms))
@@ -48,3 +49,15 @@ def lindemann_process_frames(frames: np.ndarray) -> np.ndarray:
         np.sqrt(np.divide(array_var, nframes)), array_mean
     )
     return lindemann_indices
+
+
+def calculate(frames: np.ndarray) -> np.float64:
+    """
+    Small helper function, since numba has not implemented the np.nanmean with axis parameter 
+    I cant implemnet this in the jit function for now.
+    """
+
+    indices = lindemann_per_atom(frames)
+    index = np.mean(np.nanmean(indices, axis=1))
+
+    return index

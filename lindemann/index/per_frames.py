@@ -1,26 +1,21 @@
-#!/usr/bin/env python
-
-# In[1]:
-
-
-import os
-import sys
-import time
-
 import numba as nb
 import numpy as np
-import ovito
-from ovito.io import export_file, import_file
-from ovito.modifiers import SelectTypeModifier
-
-# In[2]:
 
 
 @nb.njit(fastmath=True)  # , cache=True) #(parallel=True)
-def lindemann_process_frames(frames: np.ndarray) -> np.ndarray:
+def lindemann_per_frames_for_each_atom(frames: np.ndarray) -> np.ndarray:
+
+    """
+    Calculate the lindemann index for each atom AND FRAME
+
+    Return a ndarray of shape (len_frames, natoms, natoms)
+
+    Warning this can produce extremly large ndarrays in memory 
+    depending on the size of the cluster and the ammount of frames.
+    """
     # natoms = natoms
     natoms = len(frames[0])
-    nframes = natoms
+    nframes = len(frames)
     len_frames = len(frames)
     array_mean = np.zeros((natoms, natoms))
     array_var = np.zeros((natoms, natoms))
@@ -28,8 +23,7 @@ def lindemann_process_frames(frames: np.ndarray) -> np.ndarray:
     iframe = 1
     lindex_array = np.zeros((len_frames, natoms, natoms))
     for q, coords in enumerate(frames):
-        # print("processing frame {}/{}".format(iframe, nframes))
-        print(q)
+        # print(q)
         n, p = coords.shape
         array_distance = np.zeros((n, n))
         for i in range(n):
@@ -70,4 +64,12 @@ def lindemann_process_frames(frames: np.ndarray) -> np.ndarray:
     return lindex_array
 
 
-# In[6]:
+def calculate(indices: np.ndarray) -> np.ndarray:
+    """
+    Small helper function, since numba has not implemented the np.nanmean with axis parameter 
+    I cant implemnet this in the jit function for now.
+    """
+    return [
+        np.mean(np.nanmean(i, axis=1))
+        for i in lindemann_per_frames_for_each_atom(indices)
+    ]
