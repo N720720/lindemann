@@ -1,11 +1,12 @@
 import os
+from typing import Optional
 
 import numpy as np
 from ovito.io import import_file
 from ovito.modifiers import SelectTypeModifier
 
 
-def frames(trjfile, nframes=None):
+def frames(trjfile: str, nframes: Optional[int] = None) -> np.ndarray:
 
     """
     Get the frames from the lammps trajectory using ovito pipeline and import_file function.
