@@ -45,7 +45,7 @@ matplotlib = "^3.2.2"
 [tool.poetry.dev-dependencies]
 darglint = "^1.4.1"
 isort = {extras = ["pyproject"], version = "^4.3.21"}
-pyupgrade = "^2.6.1"
+pyupgrade = "^2.6.2"
 black = "^19.10b0"
 mypy = "^0.782"
 bandit = "^1.6.2"
