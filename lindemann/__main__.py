@@ -4,13 +4,119 @@ import random
 from enum import Enum
 from typing import Optional
 
+import numpy as np
 import typer
 from rich.console import Console
 
 from lindemann import __version__
 from lindemann.example import hello
+from lindemann.index import per_atoms, per_frames, per_trj
+from lindemann.trajectory import plt_plot, read, save
+
+app = typer.Typer(
+    name="lindemann",
+    help="lindemann is a python package to calculate the Lindemann index  of a lammps trajectory as well as the progression of the Lindemann index per frame of temperature ramps  for phase transition analysis.",
+    add_completion=False,
+)
+console = Console()
 
 
+def version_callback(value: bool):
+    """Prints the version of the package."""
+    if value:
+        console.print(
+            f"[magenta]lindemann[/] version: [bold blue]{__version__}[/]"
+        )
+        raise typer.Exit()
+
+
+@app.command(name="")
+def main(
+    trjfile: str,
+    trj: bool = typer.Option(
+        False,
+        "-t",
+        help="Calculates the Lindemann-Index for the Trajectory file",
+    ),
+    frames: bool = typer.Option(
+        False, "-f", help="Calculates the Lindemann-Index for each frame."
+    ),
+    atoms: bool = typer.Option(
+        False,
+        "-a",
+        help="Calculates the Lindemann-Index for each atom for each frame.",
+    ),
+    plot: bool = typer.Option(
+        False, "-p", help="Returns a plot Lindemann-Index vs. Frame."
+    ),
+    lammpstrj: bool = typer.Option(
+        False,
+        "-l",
+        help="Saves the individual Lindemann-Index of each Atom in a lammpstrj, so it can be viewed in Ovito.",
+    ),
+    version: bool = typer.Option(
+        None,
+        "-v",
+        "--version",
+        callback=version_callback,
+        is_eager=True,
+        help="Prints the version of the lindemann package.",
+    ),
+):
+
+    """
+    lindemann is a python package to calculate the Lindemann index  of a lammps trajectory as well as the progression of the Lindemann index per frame of temperature ramps  for phase transition analysis.
+    """
+    # frames = read.frames(trjfile)
+    # frames = lindemann.trajectory.read.frames(trjfile)
+    tjr_frames = read.frames(trjfile)
+
+    # print(trjfile)
+    # console.print(frames)
+
+    if trj:
+        pritn(per_trj.calculate(tjr_frames))
+        console.print(
+            f"[magenta]lindemann index for the Trajectory:[/] [bold blue]{per_trj.calculate(tjr_frames)}[/]"
+        )
+        raise typer.Exit()
+
+    if frames:
+        my_file_name = False
+        if my_file_name:
+            print("not implemented")
+        else:
+            filename = "linemann_per_frame.txt"
+        np.savetxt(filename, per_frames.calculate(tjr_frames))
+        console.print(
+            f"[magenta]lindemann index per frame saved as:[/] [bold blue]{filename}[/]"
+        )
+        raise typer.Exit()
+
+    if atoms:
+        filename = "linemann_per_atom.txt"
+        np.savetxt(filename, per_atoms.calculate(tjr_frames))
+        console.print(
+            f"[magenta]lindemann index per atoms saved as:[/] [bold blue]{filename}[/]"
+        )
+        raise typer.Exit()
+
+    if plot:
+        indices = per_frames.calculate(tjr_frames)
+
+        console.print(
+            f"[magenta]Saved file as:[/] [bold blue]{plt_plot.lindemann_vs_frames(indices)}[/]"
+        )
+        raise typer.Exit()
+
+    if lammpstrj:
+        indices_per_atom = per_atoms.calculate(tjr_frames)
+
+        console.print(f"[magenta]{save.to_lammps(trjfile,indices_per_atom)}[/]")
+        raise typer.Exit()
+
+
+'''
 class Color(str, Enum):
     white = "white"
     red = "red"
@@ -32,21 +138,15 @@ def version_callback(value: bool):
     """Prints the version of the package."""
     if value:
         console.print(
-            f"[yellow]lindemann[/] version: [bold blue]{__version__}[/]"
+            f"[magenta]lindemann[/] version: [bold blue]{__version__}[/]"
         )
         raise typer.Exit()
 
 
 @app.command(name="")
 def main(
-    name: str = typer.Option(..., help="Name of person to greet."),
-    color: Optional[Color] = typer.Option(
-        None,
-        "-c",
-        "--color",
-        "--colour",
-        case_sensitive=False,
-        help="Color for name. If not specified then choice will be random.",
+    trjfile: str = typer.Argument(
+        None, help="The Trajectory file you want to process.",
     ),
     version: bool = typer.Option(
         None,
@@ -56,11 +156,24 @@ def main(
         is_eager=True,
         help="Prints the version of the lindemann package.",
     ),
+    index: bool = typer.Option(
+        None,
+        "-i",
+        "--index",
+        help="Calculates the lindemann index for the given lammps trajectory.",
+    ),
 ):
-    """Prints a greeting for a giving name."""
-    if color is None:
-        # If no color specified use random value from `Color` class
-        color = random.choice(list(Color.__members__.values()))
+    """Prints a greeting for a giving trjfile."""
+    trjfile: str = trjfile
 
-    greeting: str = hello(name)
-    console.print(f"[bold {color}]{greeting}[/]")
+    console.print(trjfile)
+    # my_frames = frames.frames(trjfile)
+    # indices = lindemann_process_frames(
+    #    my_frames, len(my_frames), len(my_frames)
+    # )
+    # ind = np.mean(np.nanmean(indices, axis=1))
+    # console.print(ind)
+    # index = lindemann.index.per_trj.lindemann_process_frames(trjfile)
+    # greeting: float = index
+    # console.print(f"The lindemann index is [bold {color}]{greeting}[/]")
+'''
