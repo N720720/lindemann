@@ -10,7 +10,7 @@
 [![Security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/N720720/lindemann/blob/master/.pre-commit-config.yaml)
 [![Semantic Versions](https://img.shields.io/badge/%F0%9F%9A%80-semantic%20versions-informational.svg)](https://github.com/N720720/lindemann/releases)
-[![License](https://img.shields.io/badge/License-GPL--3.0 License-yellow.svg)](https://github.com/N720720/lindemann/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/N720720/lindemann)](https://github.com/N720720/lindemann/blob/master/LICENSE)
 
 lindemann is a python package to calculate the Lindemann index  of a lammps trajectory as well as the progression of the Lindemann index per frame of temperature ramps  for phase transition analysis.
 </div>
@@ -28,7 +28,7 @@ or install with `Poetry`
 poetry add lindemann
 ```
 
-**Usage**:
+## Usage
 
 ```console
 $ lindemann [OPTIONS] TRJFILE
