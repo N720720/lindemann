@@ -28,32 +28,16 @@ or install with `Poetry`
 poetry add lindemann
 ```
 
-Then you can run
-
-```bash
-lindemann --help
-```
-
-```bash
-lindemann --name Roman
-```
-
-or if installed with `Poetry`:
-
-```bash
-poetry run lindemann --help
-```
-
-```bash
-poetry run lindemann --name Roman
-```
-
 **Usage**:
 
 ```console
 $ lindemann [OPTIONS] TRJFILE
 ```
+or if installed with `Poetry`:
 
+```bash
+poetry run [OPTIONS] TRJFILE
+```
 **Options**:
 
 * `-t`: Calculates the Lindemann-Index for the Trajectory file
