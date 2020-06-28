@@ -347,7 +347,7 @@ GitHub creates the `bug`, `enhancement`, and `documentation` labels for you. Dep
 
 ## 🛡 License
 
-[![License](https://img.shields.io/github/license/N720720/lindemann)](https://github.com/N720720/lindemann/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/N720720/blob/master/LICENSE)](https://github.com/N720720/lindemann/blob/master/LICENSE)
 
 This project is licensed under the terms of the `MIT` license. See [LICENSE](https://github.com/N720720/lindemann/blob/master/LICENSE) for more details.
 
