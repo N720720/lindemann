@@ -73,6 +73,7 @@ def main(
     """
     # frames = read.frames(trjfile)
     # frames = lindemann.trajectory.read.frames(trjfile)
+    start = time.time()
     tjr_frames = read.frames(trjfile)
 
     # print(trjfile)
@@ -120,7 +121,7 @@ def main(
         raise typer.Exit()
 
     if timeit:
-        start = time.time()
+
         linde_for_time = per_trj.calculate(tjr_frames)
         time_diff = time.time() - start
         console.print(
