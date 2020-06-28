@@ -1,6 +1,7 @@
 # type: ignore[attr-defined]
 
 import random
+import time
 from enum import Enum
 from typing import Optional
 
@@ -62,6 +63,9 @@ def main(
         is_eager=True,
         help="Prints the version of the lindemann package.",
     ),
+    timeit: bool = typer.Option(
+        False, "-ti", "-timeit", help="Uses timeit module to show running time",
+    ),
 ):
 
     """
@@ -75,7 +79,7 @@ def main(
     # console.print(frames)
 
     if trj:
-        pritn(per_trj.calculate(tjr_frames))
+
         console.print(
             f"[magenta]lindemann index for the Trajectory:[/] [bold blue]{per_trj.calculate(tjr_frames)}[/]"
         )
@@ -114,6 +118,14 @@ def main(
 
         console.print(f"[magenta]{save.to_lammps(trjfile,indices_per_atom)}[/]")
         raise typer.Exit()
+
+    if timeit:
+        start = time.time()
+        linde_for_time = per_trj.calculate(tjr_frames)
+        time_diff = time.time() - start
+        console.print(
+            f"[magenta]lindemann index for the Trajectory:[/] [bold blue]{linde_for_time}[/] \n[magenta]Runtime:[/] [bold green]{time_diff}[/]"
+        )
 
 
 '''
