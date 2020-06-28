@@ -14,7 +14,13 @@ COPY Makefile pyproject.toml ./
 
 RUN make download-poetry && \
   make install NO_PRE_COMMIT=1 && \
+  make build && \
   rm Makefile pyproject.toml
 
 CMD mkdir -p /workspace
+
+RUN cp /dist /workspace
+
 WORKDIR /workspace
+
+RUN  python -m pip install dist/lindemann-0.3.0-py3-none-any.whl
