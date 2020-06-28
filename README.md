@@ -48,6 +48,23 @@ poetry run lindemann --help
 poetry run lindemann --name Roman
 ```
 
+**Usage**:
+
+```console
+$ lindemann [OPTIONS] TRJFILE
+```
+
+**Options**:
+
+* `-t`: Calculates the Lindemann-Index for the Trajectory file
+* `-f`: Calculates the Lindemann-Index for each frame.
+* `-a`: Calculates the Lindemann-Index for each atom for each frame.
+* `-p`: Returns a plot Lindemann-Index vs. Frame.
+* `-l`: Saves the individual Lindemann-Index of each Atom in a lammpstrj, so it can be viewed in Ovito.
+* `-v, --version`: Prints the version of the lindemann package.
+* `-ti, -timeit`: Uses timeit module to show running time
+* `--help`: Show this message and exit.
+
 ## 🛡 License
 
 [![License](https://img.shields.io/github/license/N720720/lindemann)](https://github.com/N720720/lindemann/blob/master/LICENSE)
