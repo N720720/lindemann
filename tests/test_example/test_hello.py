@@ -1,9 +1,9 @@
+import numpy as np
 import pytest
 
 from lindemann.example import hello
 from lindemann.index import per_atoms, per_frames, per_trj
 from lindemann.trajectory import read
-import numpy as np
 
 "Testing the individal parts of the index module, its possible to change the test setup for individual modules"
 
