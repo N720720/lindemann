@@ -32,6 +32,28 @@ method to determine the melting point of nanoparticles, opposed to the enthalpy.
 Accordingly the Lindemann index is often considered, when the melting point of
 nano-particles is of interest. [56–58] The index is defined as, [59]
 
+<a href="https://www.codecogs.com/eqnedit.php?latex=\delta&space;=\frac{2}{N(N-1)}&space;\sum_{i<j}\sqrt{\frac{\langle&space;r_{ij}^2&space;\rangle_t-\langle&space;r_{ij}\rangle_t^2}{\langle&space;r_{ij}\rangle_t}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\delta&space;=\frac{2}{N(N-1)}&space;\sum_{i<j}\sqrt{\frac{\langle&space;r_{ij}^2&space;\rangle_t-\langle&space;r_{ij}\rangle_t^2}{\langle&space;r_{ij}\rangle_t}}" title="\delta =\frac{2}{N(N-1)} \sum_{i<j}\sqrt{\frac{\langle r_{ij}^2 \rangle_t-\langle r_{ij}\rangle_t^2}{\langle r_{ij}\rangle_t}}" /></a>
+
+where N is the number of atoms in the nano particle. r ij is the distance between
+atom i and atom j. The brackets h i representing a time or temperature average. The
+rms of the bond fluctuation is considerable lower for a solid than for a liquid, due to
+restrained degrees of freedom. In a solid, the atoms hold on to their position and only
+fluctuate around their equilibrium positions. During the melting process the atoms
+become more mobile and are able to leave their original position. The translation
+movement of atoms is magnitudes larger than that of the bond fluctuations of a
+solid. As a result, the Lindemann index rises dramatically at the melting point and
+therefore gives a suitable observable to determine the transition phase. In effect,
+the Lindemann index measures a sort of average difussion coefficient for the atoms
+in the system.
+A key problem with much of the literature regarding the Lindemann index, is
+that there is a uncertainty of where to define the phase transition within a Linde-
+mann plot. On the grounds that the melting point is a macroscopic definition for
+bulk structures. But here nanoparticles differ: because of their relative small size,
+compared to bulk structures, melting can occur fist on their relative large surface,
+compared to the volume they obtain and followed by the melting of core of the
+particle. Therefore a temperature range, rather then a melting point, is observed,
+as stated by Neyts in their work. [57]
+
 ## Installation
 
 ```bash
