@@ -15,6 +15,22 @@
 lindemann is a python package to calculate the Lindemann index  of a lammps trajectory as well as the progression of the Lindemann index per frame of temperature ramps  for phase transition analysis.
 </div>
 
+## Background
+
+A key problem with the measurement of the melting point of nanoparticles, as laid
+out by Alavi [56], is that with decreasing size of a given nanoparticle the phase
+transition, defined as the temperature of a sudden change in the enthalpy, becomes
+less pronounced. This is caused by the surface effect: for a given cluster the surface
+area is larger compared to a bulk structure of the same size. Melting does not take
+place all at once, but is a longer melt transition and no longer really a melting point.
+[57]
+The Lindemann index, stated in equation 2.30 presents a solution for this prob-
+lem. It describes the root-mean-square (rms) fluctuation of the bonds or interatomic
+distance in the system over time (or temperature, if the temperature of the sys-
+tem changes as the simulation progresses). The Lindemann index is a more robust
+method to determine the melting point of nanoparticles, opposed to the enthalpy.
+Accordingly the Lindemann index is often considered, when the melting point of
+nano-particles is of interest. [56–58] The index is defined as, [59]
 
 ## Installation
 
