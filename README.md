@@ -50,6 +50,10 @@ poetry run [OPTIONS] TRJFILE
 * `-ti, -timeit`: Uses timeit module to show running time
 * `--help`: Show this message and exit.
 
+## Demo
+
+![](demo_lammps_ovito.gif)
+
 ## Background
 
 A key problem with the measurement of the melting point of nanoparticles is that with decreasing size of a given nanoparticle the phase transition, defined as the temperature of a sudden change in the enthalpy, becomes less pronounced. This is caused by the surface effect: for a given cluster the surface area is larger compared to a bulk structure of the same size. Melting does not take place all at once, but is a longer melt transition and no longer really a melting point. 
