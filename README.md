@@ -52,6 +52,12 @@ poetry run [OPTIONS] TRJFILE
 
 ## Demo
 
+Basic usage to calculate the Lindemann Index:
+
+![](linde_t.gif)
+
+Usage of the of the lammpstrj file output feature to save the development for each atom per frame into a lammps trajectory file. Afterwards the trajectory can be viewed with ovito for example, here the lindemann development was used for the ovito color coding feature.
+
 ![](demo_lammps_ovito.gif)
 
 ## Background
