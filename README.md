@@ -60,7 +60,7 @@ The package has a plotting feature. It will show the a plot Lindemann index vs. 
 
 ![](linde_p_new.gif)
 
-Usage of the of the lammpstrj file output feature to save the development for each atom per frame into a lammps trajectory file. Afterwards the trajectory can be viewed with ovito for example, here the lindemann development was used for the ovito color coding feature.
+Usage of the of the lammpstrj file output feature to save the progression for each atom per frame into a lammps trajectory file. Afterwards the trajectory can be viewed with ovito for example, here the lindemann progression was used for the ovito color coding feature.
 
 ![](demo_lammps_ovito.gif)
 
