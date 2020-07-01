@@ -56,6 +56,10 @@ Basic usage to calculate the Lindemann Index:
 
 ![](linde_t.gif)
 
+The package has a plotting feature. It will show the a plot Lindemann index vs. the frames. If the trajectory file is a temperature ramp, it is possible to determine the phasetransition.
+
+![](linde_p_new.gif)
+
 Usage of the of the lammpstrj file output feature to save the development for each atom per frame into a lammps trajectory file. Afterwards the trajectory can be viewed with ovito for example, here the lindemann development was used for the ovito color coding feature.
 
 ![](demo_lammps_ovito.gif)
