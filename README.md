@@ -86,7 +86,7 @@ This project is licensed under the terms of the `MIT` license. See [LICENSE](htt
 
 ```
 @misc{lindemann,
-  author = {N720720},
+  author = {Sebastian Thurm},
   title = {lindemann is a python package to calculate the Lindemann index  of a lammps trajectory as well as the progression of the Lindemann index per frame of temperature ramps  for phase transition analysis.},
   year = {2020},
   publisher = {GitHub},
@@ -97,4 +97,14 @@ This project is licensed under the terms of the `MIT` license. See [LICENSE](htt
 
 ## Credits
 
+The Lindemann index is introduced in the following paper,\
+F. A. Lindemann, Zeitschrift für Phys. 1910, 11, 609–612.\
+This package is based on the work from [`ybyygu`](https://github.com/ybyygu/lindemann-index)
+and [`whashi44`](https://github.com/whashi44/lindemann) on calculating the Lindemann index.\
+The visualisations in this Readme are made with [`Ovito`](https://www.ovito.org/).\
+[`A. Stukowski, Visualization and analysis of atomistic simulation data with OVITO – the Open Visualization Tool
+Modelling Simul. Mater. Sci. Eng. 18 (2010), 015012`](https://iopscience.iop.org/article/10.1088/0965-0393/18/1/015012).\
 This project was generated with [`python-package-template`](https://github.com/TezRomacH/python-package-template).
+
+
+
