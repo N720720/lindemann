@@ -373,7 +373,7 @@ description = "A scientific visualization and analysis software for particle sim
 name = "ovito"
 optional = false
 python-versions = ">=3.4"
-version = "3.1.1"
+version = "3.1.2"
 
 [package.dependencies]
 PySide2 = ">=5.14"
@@ -797,7 +797,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "ee534e1b96b6bbdca08a08999320549279b2146b4ea4e76b6a331a48647f29e2"
+content-hash = "75c630f818d0c2f4d314376653276b57b14f8ec377b34f83bc8560c92b229dce"
 python-versions = "~3.7"
 
 [metadata.files]
@@ -897,16 +897,19 @@ kiwisolver = [
     {file = "kiwisolver-1.2.0-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:443c2320520eda0a5b930b2725b26f6175ca4453c61f739fef7a5847bd262f74"},
     {file = "kiwisolver-1.2.0-cp36-cp36m-manylinux1_i686.whl", hash = "sha256:efcf3397ae1e3c3a4a0a0636542bcad5adad3b1dd3e8e629d0b6e201347176c8"},
     {file = "kiwisolver-1.2.0-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:fccefc0d36a38c57b7bd233a9b485e2f1eb71903ca7ad7adacad6c28a56d62d2"},
+    {file = "kiwisolver-1.2.0-cp36-cp36m-manylinux2014_aarch64.whl", hash = "sha256:be046da49fbc3aa9491cc7296db7e8d27bcf0c3d5d1a40259c10471b014e4e0c"},
     {file = "kiwisolver-1.2.0-cp36-none-win32.whl", hash = "sha256:60a78858580761fe611d22127868f3dc9f98871e6fdf0a15cc4203ed9ba6179b"},
     {file = "kiwisolver-1.2.0-cp36-none-win_amd64.whl", hash = "sha256:556da0a5f60f6486ec4969abbc1dd83cf9b5c2deadc8288508e55c0f5f87d29c"},
     {file = "kiwisolver-1.2.0-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:7cc095a4661bdd8a5742aaf7c10ea9fac142d76ff1770a0f84394038126d8fc7"},
     {file = "kiwisolver-1.2.0-cp37-cp37m-manylinux1_i686.whl", hash = "sha256:c955791d80e464da3b471ab41eb65cf5a40c15ce9b001fdc5bbc241170de58ec"},
     {file = "kiwisolver-1.2.0-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:603162139684ee56bcd57acc74035fceed7dd8d732f38c0959c8bd157f913fec"},
+    {file = "kiwisolver-1.2.0-cp37-cp37m-manylinux2014_aarch64.whl", hash = "sha256:63f55f490b958b6299e4e5bdac66ac988c3d11b7fafa522800359075d4fa56d1"},
     {file = "kiwisolver-1.2.0-cp37-none-win32.whl", hash = "sha256:03662cbd3e6729f341a97dd2690b271e51a67a68322affab12a5b011344b973c"},
     {file = "kiwisolver-1.2.0-cp37-none-win_amd64.whl", hash = "sha256:4eadb361baf3069f278b055e3bb53fa189cea2fd02cb2c353b7a99ebb4477ef1"},
     {file = "kiwisolver-1.2.0-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:c31bc3c8e903d60a1ea31a754c72559398d91b5929fcb329b1c3a3d3f6e72113"},
     {file = "kiwisolver-1.2.0-cp38-cp38-manylinux1_i686.whl", hash = "sha256:d52b989dc23cdaa92582ceb4af8d5bcc94d74b2c3e64cd6785558ec6a879793e"},
     {file = "kiwisolver-1.2.0-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:e586b28354d7b6584d8973656a7954b1c69c93f708c0c07b77884f91640b7657"},
+    {file = "kiwisolver-1.2.0-cp38-cp38-manylinux2014_aarch64.whl", hash = "sha256:38d05c9ecb24eee1246391820ed7137ac42a50209c203c908154782fced90e44"},
     {file = "kiwisolver-1.2.0-cp38-none-win32.whl", hash = "sha256:d069ef4b20b1e6b19f790d00097a5d5d2c50871b66d10075dab78938dc2ee2cf"},
     {file = "kiwisolver-1.2.0-cp38-none-win_amd64.whl", hash = "sha256:18d749f3e56c0480dccd1714230da0f328e6e4accf188dd4e6884bdd06bf02dd"},
     {file = "kiwisolver-1.2.0.tar.gz", hash = "sha256:247800260cd38160c362d211dcaf4ed0f7816afb5efe56544748b21d6ad6d17f"},
@@ -1020,6 +1023,7 @@ numba = [
     {file = "numba-0.50.1-cp38-cp38-manylinux2014_x86_64.whl", hash = "sha256:c98b09d78144da2e5b8c7b690f80d12076a6b8e9af6e3c7f772a08cf04821cc1"},
     {file = "numba-0.50.1-cp38-cp38-win32.whl", hash = "sha256:3a4114dc1b9af491235ce30517913afe0a0a226117a924e7361d626f55e0e054"},
     {file = "numba-0.50.1-cp38-cp38-win_amd64.whl", hash = "sha256:5848d6bc5604664823a1681b17eb934147b24cfcb4df672be33315ff3f9f7afe"},
+    {file = "numba-0.50.1.tar.gz", hash = "sha256:89e81b51b880f9b18c82b7095beaccc6856fcf84ba29c4f0ced42e4e5748a3a7"},
 ]
 numpy = [
     {file = "numpy-1.19.0-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:63d971bb211ad3ca37b2adecdd5365f40f3b741a455beecba70fd0dde8b2a4cb"},
@@ -1050,16 +1054,16 @@ numpy = [
     {file = "numpy-1.19.0.zip", hash = "sha256:76766cc80d6128750075378d3bb7812cf146415bd29b588616f72c943c00d598"},
 ]
 ovito = [
-    {file = "ovito-3.1.1-cp34-cp34m-manylinux1_x86_64.whl", hash = "sha256:5bdf41e8a24068a89e8042fad4a2b131e8a89e2008de6ed2720ab01f6acc97f3"},
-    {file = "ovito-3.1.1-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:b147c303e78bd76314e33c3f20683d3abe61531d17c13828fee57111f5c7f2d4"},
-    {file = "ovito-3.1.1-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:7df8a5d225c51966429b28b307153230424f834926b4e545638e1e2c8a3e4fdf"},
-    {file = "ovito-3.1.1-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:dc99e75ea581bff1747e76caa1d54bed2141b160348b18b2217276181d462c1d"},
-    {file = "ovito-3.1.1-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:fe404bbf9ffdd2b8f65d73d605d64e9777918d24eca246a09f7ec5b2ffdbb748"},
-    {file = "ovito-3.1.1-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:ad179cb0f5e4f9890bcfe70afd6e47ba114d2c3e14cdd18bd831aa4a0bd0bd8e"},
-    {file = "ovito-3.1.1-cp37-cp37m-win_amd64.whl", hash = "sha256:74171713cb8f0c356fe675225bc153f1abc0a9875d7a9d24ad67f450b4b909e4"},
-    {file = "ovito-3.1.1-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:6a7ea86e50bf22d6b3682337715633407a1c7656d29cd2a61ba5eee6efaa2ce8"},
-    {file = "ovito-3.1.1-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:62f2401a6c26acf81f947316d22d8aef856de7c05e4c527323ce293599824da1"},
-    {file = "ovito-3.1.1-cp38-cp38-win_amd64.whl", hash = "sha256:9313259620b9800199e6984b240580aa40b91862a8c92d023ab4d0959ab923f5"},
+    {file = "ovito-3.1.2-cp34-cp34m-manylinux1_x86_64.whl", hash = "sha256:8ba93e529e733e0baf559cccc15a77ec655ba81740d449086271c33cacd6341f"},
+    {file = "ovito-3.1.2-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:7c86b6152da82ed2a12d22a7ee2ea805b130a1dd9aa810561e840a0dc174969b"},
+    {file = "ovito-3.1.2-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:b8c6be1c1f050b6ba761f913d8e5393cc841abda99f08da6f597b04c7ac25341"},
+    {file = "ovito-3.1.2-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:a8cee02cc1ef11c4fe59033b563746935ca560c8578a710f003f94f92281a5f2"},
+    {file = "ovito-3.1.2-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:98672ccdc4d161c221034550911a55b3ae3629e1202d2ee3e0e4a4cf52f041ae"},
+    {file = "ovito-3.1.2-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:17ec10efdb84f2185aa90b133db9e14cb69d4c6ec1f54aba08440956b475e26c"},
+    {file = "ovito-3.1.2-cp37-cp37m-win_amd64.whl", hash = "sha256:43805e1a22cbe881cd8e10d449b5f5e8566e5a68b19e356f380c44d868dccbab"},
+    {file = "ovito-3.1.2-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:9be905f11e76479bc13d06c1859abdc067d15e6b64658a2ef4819a120215558b"},
+    {file = "ovito-3.1.2-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:936c3c3a3d209a269e97f2ce576011f9e5aa870864fbf15d38af8a98e9cf12ca"},
+    {file = "ovito-3.1.2-cp38-cp38-win_amd64.whl", hash = "sha256:407323d59182fde232417dc956abef7af6d549c46d669b033821a61ba0d4bed2"},
 ]
 packaging = [
     {file = "packaging-20.4-py2.py3-none-any.whl", hash = "sha256:998416ba6962ae7fbd6596850b80e17859a5753ba17c32284f67bfff33784181"},
