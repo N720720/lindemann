@@ -63,6 +63,29 @@ The package has a plotting feature. It will show the a plot Lindemann index vs. 
 Usage of the of the lammpstrj file output feature to save the progression for each atom per frame into a lammps trajectory file. Afterwards the trajectory can be viewed with ovito for example, here the lindemann progression was used for the ovito color coding feature.
 
 ![](demo_lammps_ovito.gif)
+## Motivation
+
+In my research I have investigated simulated annealing of brass nanoparticles. I had to determine the melting point of many different cluster sizes and zinc compositions. For this purpose I have chosen the Lindemann index. Because of the amount of calculations I wanted a cli tool that could be easily used with mpi. Furthermore, the calculation costs were decisive for me. At the same time i wanted to get to know numba better and so i combined both in this project. numba does not really like pythonic code and can handle verbose code better.
+
+[`ybyygu`](https://github.com/ybyygu/lindemann-index) had already worked out a nice solution in cython with the Welford algorithm, which was found to be easy to convert into numba. [`whashi44`](https://github.com/whashi44/lindemann) in turn had presented a great Numpy version with a GUI, his version convinced me to use ovito for read write tasks of lammps trajectories.
+
+For the determination of the melting point of nanoparticles you can often find plots in the literature which follow the following scheme. A temperature range is defined where the phase transition is likely to take place. Then step lengths for the temperature are defined and then a trajectory is calculated for the respective temperature. If a phase transition occurs, this can be recognized by a jump of the lindemann index. As shown in figure 1
+
+![](like_in_literature.png)
+
+Figure 1. 
+
+By working with the Lindemann index and the Welford algorithm  I realized that the development of the lindemann index can be observed across the trajectory. The Welford algorithm allows a live calculation of the mean std, which means that the development of the lindemann index can be observed with the simulation steps. Since I worked with heat ramps for simulated annaeling, I was interested in the development of the lindemann index across the frames of these trajectories. \
+This could be realized by a modification of the Welford algorithm . With this method you can observe the change of the lindemann index per frame. Here, too, a characteristic change of the lindemann index occurs, with which the phase transition can also be determined.  The development of the lindemann index over the frames can then be visualized as a plot for the phase transition determination.  If the temperature of the lammps is plotted against the lindemann index, the temperature can also be read directly for the phase transition, as seen in figure 2. 
+
+![](new_way_linde.png)
+
+Figure 2. 
+
+With a further modification of the Welford algorithm you can also see the contribution of each atom to the lindemann index for each frame. This was especially interesting for me because atomic properties can be easily visualized with tools like OVITO. This gives one a detailed view of the phase transition. This is especially interesting for the investigation of nanoparticles during the phase transition, as they often start melting from the surface. This is where the method in combination with ovito offers a good starting point for further investigations.
+
+Furthermore, computational costs can be reduced by using one heat ramp instead of many trajectories with discrete temperatures. As an example, see fig 1 and 2. In figure 1 12 trajectories with different temperatures were chosen to determine the phase transition. Near the phase transition the step width was reduced for a better determination of the phase transition. Each trajectory has 50k steps, i.e. 600k in total, whereas in figure 2 the heatramp has only 200k steps. 
+
 
 ## Background
 
@@ -103,7 +126,9 @@ This package is based on the work from [`ybyygu`](https://github.com/ybyygu/lind
 and [`whashi44`](https://github.com/whashi44/lindemann) on calculating the Lindemann index.\
 The visualisations in this Readme are made with [`Ovito`](https://www.ovito.org/).\
 A. Stukowski, *Model. Simul. Mater. Sci. Eng.* **2010**, *18*, 15012. [`link`](https://iopscience.iop.org/article/10.1088/0965-0393/18/1/015012).\
-This project was generated with [`python-package-template`](https://github.com/TezRomacH/python-package-template).
+This project was generated with [`python-package-template`](https://github.com/TezRomacH/python-package-template).\
+The Welford Algorith can be found in:\
+Donald E. Knuth ,*The art of computer programming*, volume 2 (3rd ed.): seminumerical algorithms, Addison-Wesley Longman Publishing Co, **1997**, 232.
 
 
 
