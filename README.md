@@ -10,7 +10,7 @@
 [![Security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)  
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/N720720/lindemann/blob/master/.pre-commit-config.yaml)
 [![Semantic Versions](https://img.shields.io/badge/%F0%9F%9A%80-semantic%20versions-informational.svg)](https://github.com/N720720/lindemann/releases)
-[![License](https://img.shields.io/github/license/N720720/lindemann)](https://github.com/N720720/lindemann/blob/master/LICENSE)
+[![License](https://img.shields.io/pypi/l/lindemann)](https://pypi/l/lindemann/)
 
 ![](459_Atoms_brass.gif)
 
@@ -101,7 +101,7 @@ A key problem with much of the literature regarding the Lindemann index, is that
 
 ## 🛡 License
 
-[![License](https://img.shields.io/github/license/N720720/lindemann)](https://github.com/N720720/lindemann/blob/master/LICENSE)
+[![License](https://img.shields.io/pypi/l/lindemann)](https://pypi/l/lindemann/)
 
 This project is licensed under the terms of the `GPLv3` license. See [LICENSE](https://github.com/N720720/lindemann/blob/master/LICENSE) for more details.
 
