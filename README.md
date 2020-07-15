@@ -39,6 +39,10 @@ or if installed with `Poetry`:
 ```bash
 poetry run [OPTIONS] TRJFILE
 ```
+**Precautions**
+
+Make sure you have enough memory available before you run any flags despite the -t flag. You can check the memory use by using the `-m` or the `--mem_use` Option. The high memory use will be fixed as soon as the numpy.nanmean() function with axis is available for numba.
+
 **Options**:
 
 * `-t`: Calculates the Lindemann-Index for the Trajectory file
@@ -48,6 +52,7 @@ poetry run [OPTIONS] TRJFILE
 * `-l`: Saves the individual Lindemann-Index of each Atom in a lammpstrj, so it can be viewed in Ovito.
 * `-v, --version`: Prints the version of the lindemann package.
 * `-ti, -timeit`: Uses timeit module to show running time
+* `-m, --mem_use`: Calculates the memory use. Run it before you use any of the cli functionality despite the -t flag
 * `--help`: Show this message and exit.
 
 ## Demo
@@ -73,18 +78,18 @@ For the determination of the melting point of nanoparticles you can often find p
 
 ![](like_in_literature.png)
 
-Figure 1. 
+*Figure 1.* 
 
 By working with the Lindemann index and the Welford algorithm  I realized that the development of the lindemann index can be observed across the trajectory. The Welford algorithm allows a live calculation of the mean std, which means that the development of the lindemann index can be observed with the simulation steps. Since I worked with heat ramps for simulated annaeling, I was interested in the development of the lindemann index across the frames of these trajectories. \
 This could be realized by a modification of the Welford algorithm . With this method you can observe the change of the lindemann index per frame. Here, too, a characteristic change of the lindemann index occurs, with which the phase transition can also be determined.  The development of the lindemann index over the frames can then be visualized as a plot for the phase transition determination.  If the temperature of the lammps is plotted against the lindemann index, the temperature can also be read directly for the phase transition, as seen in figure 2. 
 
 ![](new_way_linde.png)
 
-Figure 2. 
+*Figure 2: Note the noise of the temperature was smoothed with help of [numpy.convolve](https://numpy.org/doc/stable/reference/generated/numpy.convolve.html) with a box size of 40.* 
 
 With a further modification of the Welford algorithm you can also see the contribution of each atom to the lindemann index for each frame. This was especially interesting for me because atomic properties can be easily visualized with tools like OVITO. This gives one a detailed view of the phase transition. This is especially interesting for the investigation of nanoparticles during the phase transition, as they often start melting from the surface. This is where the method in combination with ovito offers a good starting point for further investigations.
 
-Furthermore, computational costs can be reduced by using one heat ramp instead of many trajectories with discrete temperatures. As an example, see fig 1 and 2. In figure 1 12 trajectories with different temperatures were chosen to determine the phase transition. Near the phase transition the step width was reduced for a better determination of the phase transition. Each trajectory has 50k steps, i.e. 600k in total, whereas in figure 2 the heatramp has only 200k steps. 
+Furthermore, computational costs can be reduced by using one heat ramp instead of many trajectories with discrete temperatures. As an example, see fig 1 and 2. In figure 1 16 trajectories with different temperatures were chosen to determine the phase transition. Near the phase transition the step width was reduced for a better determination of the phase transition. Each trajectory has 50k steps, that is 800k in total, whereas in figure 2 the heatramp has only 200k steps. 
 
 
 ## Background
@@ -129,6 +134,3 @@ A. Stukowski, *Model. Simul. Mater. Sci. Eng.* **2010**, *18*, 15012. [`link`](h
 This project was generated with [`python-package-template`](https://github.com/TezRomacH/python-package-template).\
 The Welford Algorith can be found in:\
 Donald E. Knuth ,*The art of computer programming*, volume 2 (3rd ed.): seminumerical algorithms, Addison-Wesley Longman Publishing Co, **1997**, 232.
-
-
-

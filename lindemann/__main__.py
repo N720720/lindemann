@@ -70,7 +70,7 @@ def main(
         False,
         "-m",
         "-mem_use",
-        help="Calculates the memory use for the all cli functionality despite the -t flag",
+        help="Calculates the memory use. Run it before you use any of the cli functionality despite the -t flag",
     ),
 ):
 
