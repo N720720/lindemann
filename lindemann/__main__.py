@@ -11,7 +11,7 @@ from rich.console import Console
 
 from lindemann import __version__
 from lindemann.example import hello
-from lindemann.index import per_atoms, per_frames, per_trj
+from lindemann.index import mem_use, per_atoms, per_frames, per_trj
 from lindemann.trajectory import plt_plot, read, save
 
 app = typer.Typer(
@@ -65,6 +65,12 @@ def main(
     ),
     timeit: bool = typer.Option(
         False, "-ti", "-timeit", help="Uses timeit module to show running time",
+    ),
+    mem_useage: bool = typer.Option(
+        False,
+        "-m",
+        "-mem_use",
+        help="Calculates the memory use for the all cli functionality despite the -t flag",
     ),
 ):
 
@@ -127,6 +133,14 @@ def main(
         console.print(
             f"[magenta]lindemann index for the Trajectory:[/] [bold blue]{linde_for_time}[/] \n[magenta]Runtime:[/] [bold green]{time_diff}[/]"
         )
+        raise typer.Exit()
+
+    if mem_useage:
+
+        mem_use_in_gb = mem_use.in_gb(tjr_frames)
+
+        console.print(f"[magenta]memory use:[/] [bold blue]{mem_use_in_gb}[/]")
+        raise typer.Exit()
 
 
 '''
