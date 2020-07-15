@@ -7,123 +7,15 @@
 [![Dependencies Status](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)](https://github.com/N720720/lindemann/pulls?utf8=%E2%9C%93&q=is%3Apr%20author%3Aapp%2Fdependabot)
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)
+[![Security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)  
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/N720720/lindemann/blob/master/.pre-commit-config.yaml)
 [![Semantic Versions](https://img.shields.io/badge/%F0%9F%9A%80-semantic%20versions-informational.svg)](https://github.com/N720720/lindemann/releases)
 [![License](https://img.shields.io/github/license/N720720/lindemann)](https://github.com/N720720/lindemann/blob/master/LICENSE)
 
+![](459_Atoms_brass.gif)
+
 lindemann is a python package to calculate the Lindemann index  of a lammps trajectory as well as the progression of the Lindemann index per frame of temperature ramps  for phase transition analysis.
 </div>
-
-## Very first steps
-
-### Initial
-
-1. Initialize `git` inside your repo:
-
-```bash
-git init
-```
-
-2. If you don't have `Poetry` installed run:
-
-```bash
-make download-poetry
-```
-
-3. Initialize poetry and install `pre-commit` hooks:
-
-```bash
-make install
-```
-
-4. Upload initial code to GitHub (ensure you've run `make install` to use `pre-commit`):
-
-```bash
-git add .
-git commit -m ":tada: Initial commit"
-git remote add origin https://github.com/N720720/lindemann.git
-git push -u origin master
-```
-
-### Initial setting up
-
-- Set up [Dependabot](https://github.com/marketplace/dependabot-preview) to ensure you have the latest dependencies.
-- Set up [Stale bot](https://github.com/apps/stale) for automatic issue closing.
-
-### Poetry
-
-All manipulations with dependencies are executed through Poetry. If you're new to it, look through [the documentation](https://python-poetry.org/docs/).
-
-<details>
-<summary>Notes about Poetry</summary>
-<p>
-
-Poetry's [commands](https://python-poetry.org/docs/cli/#commands) are very intuitive and easy to learn, like:
-
-- `poetry add numpy`
-- `poetry run pytest`
-- `poetry build`
-- etc
-
-</p>
-</details>
-
-### Building your package
-
-Building a new version of the application contains steps:
-
-- Bump the version of your package `poetry version <version>`. You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions](https://semver.org/) standard.
-- Make a commit to `GitHub`.
-- Create a `GitHub release`.
-- And... publish 🙂 `poetry publish --build`
-
-## What's next
-
-Well, that's up to you. I can only recommend the packages and articles that helped me.
-
-Packages:
-
-- [`Typer`](https://github.com/tiangolo/typer) is great for creating CLI applications.
-- [`Rich`](https://github.com/willmcgugan/rich) makes it easy to add beautiful formatting in the terminal.
-- [`FastAPI`](https://github.com/tiangolo/fastapi) is a type-driven asynchronous web framework.
-- [`IceCream`](https://github.com/gruns/icecream) is a little library for sweet and creamy debugging
-
-Articles:
-
-- [Open Source Guides](https://opensource.guide/)
-- [GitHub Actions Documentation](https://help.github.com/en/actions)
-- Maybe you would like to add [gitmoji](https://gitmoji.carloscuesta.me/) to commit names. This is really funny. 😄
-
-## 🚀 Features
-
-For your development we've prepared:
-
-- Supports for `Python 3.7` and higher.
-- [`Poetry`](https://python-poetry.org/) as the dependencies manager. See configuration in [`pyproject.toml`](https://github.com/N720720/lindemann/blob/master/pyproject.toml) and [`setup.cfg`](https://github.com/N720720/lindemann/blob/master/setup.cfg).
-- Power of [`black`](https://github.com/psf/black), [`isort`](https://github.com/timothycrosley/isort) and [`pyupgrade`](https://github.com/asottile/pyupgrade) formatters.
-- Ready-to-use [`pre-commit`](https://pre-commit.com/) hooks with formatters above.
-- Type checks with the configured [`mypy`](https://mypy.readthedocs.io).
-- Testing with [`pytest`](https://docs.pytest.org/en/latest/).
-- Docstring checks with [`darglint`](https://github.com/terrencepreilly/darglint).
-- Security checks with [`safety`](https://github.com/pyupio/safety) and [`bandit`](https://github.com/PyCQA/bandit).
-- Well-made [`.editorconfig`](https://github.com/N720720/lindemann/blob/master/.editorconfig), [`.dockerignore`](https://github.com/N720720/lindemann/blob/master/.dockerignore), and [`.gitignore`](https://github.com/N720720/lindemann/blob/master/.gitignore). You don't have to worry about those things.
-
-For building and deployment:
-
-- `GitHub` integration.
-- [`Makefile`](https://github.com/N720720/lindemann/blob/master/Makefile#L89) for building routines. Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds, etc. More details at [Makefile summary](#makefile-usage)).
-- [Dockerfile](https://github.com/N720720/lindemann/blob/master/docker/Dockerfile) for your package.
-- `Github Actions` with predefined [build workflow](https://github.com/N720720/lindemann/blob/master/.github/workflows/build.yml) as the default CI/CD.
-- Always up-to-date dependencies with [`@dependabot`](https://dependabot.com/) (You will only [need to setup free plan](https://github.com/marketplace/dependabot-preview)).
-- Automatic drafts of new releases with [`Release Drafter`](https://github.com/marketplace/actions/release-drafter). It creates a list of changes based on labels in merged `Pull Requests`. You can see labels (aka `categories`) in [`release-drafter.yml`](https://github.com/N720720/lindemann/blob/master/.github/release-drafter.yml). Works perfectly with [Semantic Versions](https://semver.org/) specification.
-
-For creating your open source community:
-
-- Ready-to-use [Pull Requests templates](https://github.com/N720720/lindemann/blob/master/.github/PULL_REQUEST_TEMPLATE.md) and several [Issue templates](https://github.com/N720720/lindemann/tree/master/.github/ISSUE_TEMPLATE).
-- Files such as: `LICENSE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically.
-- [`Stale bot`](https://github.com/apps/stale) that closes abandoned issues after a period of inactivity. (You will only [need to setup free plan](https://github.com/marketplace/stale)). Configuration is [here](https://github.com/N720720/lindemann/blob/master/.github/.stale.yml).
-- [Semantic Versions](https://semver.org/) specification with [`Release Drafter`](https://github.com/marketplace/actions/release-drafter).
 
 ## Installation
 
@@ -137,225 +29,87 @@ or install with `Poetry`
 poetry add lindemann
 ```
 
-Then you can run
+## Usage
 
-```bash
-lindemann --help
+```console
+$ lindemann [OPTIONS] TRJFILE
 ```
-
-```bash
-lindemann --name Roman
-```
-
 or if installed with `Poetry`:
 
 ```bash
-poetry run lindemann --help
+poetry run [OPTIONS] TRJFILE
 ```
+**Options**:
 
-```bash
-poetry run lindemann --name Roman
-```
+* `-t`: Calculates the Lindemann-Index for the Trajectory file
+* `-f`: Calculates the Lindemann-Index for each frame.
+* `-a`: Calculates the Lindemann-Index for each atom for each frame.
+* `-p`: Returns a plot Lindemann-Index vs. Frame.
+* `-l`: Saves the individual Lindemann-Index of each Atom in a lammpstrj, so it can be viewed in Ovito.
+* `-v, --version`: Prints the version of the lindemann package.
+* `-ti, -timeit`: Uses timeit module to show running time
+* `--help`: Show this message and exit.
 
-### Makefile usage
+## Demo
 
-[`Makefile`](https://github.com/N720720/lindemann/blob/master/Makefile) contains many functions for fast assembling and convenient work.
+Basic usage to calculate the Lindemann Index:
 
-<details>
-<summary>1. Download Poetry</summary>
-<p>
+![](linde_t.gif)
 
-```bash
-make download-poetry
-```
+The package has a plotting feature. It will show the a plot Lindemann index vs. the frames. If the trajectory file is a temperature ramp, it is possible to determine the phasetransition.
 
-</p>
-</details>
+![](linde_p_new.gif)
 
-<details>
-<summary>2. Install all dependencies and pre-commit hooks</summary>
-<p>
+Usage of the of the lammpstrj file output feature to save the progression for each atom per frame into a lammps trajectory file. Afterwards the trajectory can be viewed with ovito for example, here the lindemann progression was used for the ovito color coding feature.
 
-```bash
-make install
-```
+![](demo_lammps_ovito.gif)
+## Motivation
 
-If you do not want to install pre-commit hooks, run the command with the NO_PRE_COMMIT flag:
+In my research I have investigated simulated annealing of brass nanoparticles. I had to determine the melting point of many different cluster sizes and zinc compositions. For this purpose I have chosen the Lindemann index. Because of the amount of calculations I wanted a cli tool that could be easily used with mpi. Furthermore, the calculation costs were decisive for me. At the same time i wanted to get to know numba better and so i combined both in this project. numba does not really like pythonic code and can handle verbose code better.
 
-```bash
-make install NO_PRE_COMMIT=1
-```
+[`ybyygu`](https://github.com/ybyygu/lindemann-index) had already worked out a nice solution in cython with the Welford algorithm, which was found to be easy to convert into numba. [`whashi44`](https://github.com/whashi44/lindemann) in turn had presented a great Numpy version with a GUI, his version convinced me to use ovito for read write tasks of lammps trajectories.
 
-</p>
-</details>
+For the determination of the melting point of nanoparticles you can often find plots in the literature which follow the following scheme. A temperature range is defined where the phase transition is likely to take place. Then step lengths for the temperature are defined and then a trajectory is calculated for the respective temperature. If a phase transition occurs, this can be recognized by a jump of the lindemann index. As shown in figure 1
 
-<details>
-<summary>3. Check the security of your code</summary>
-<p>
+![](like_in_literature.png)
 
-```bash
-make check-safety
-```
+Figure 1. 
 
-This command launches a `Poetry` and `Pip` integrity check as well as identifies security issues with `Safety` and `Bandit`. By default, the build will not crash if any of the items fail. But you can set `STRICT=1` for the entire build, or you can configure strictness for each item separately.
+By working with the Lindemann index and the Welford algorithm  I realized that the development of the lindemann index can be observed across the trajectory. The Welford algorithm allows a live calculation of the mean std, which means that the development of the lindemann index can be observed with the simulation steps. Since I worked with heat ramps for simulated annaeling, I was interested in the development of the lindemann index across the frames of these trajectories. \
+This could be realized by a modification of the Welford algorithm . With this method you can observe the change of the lindemann index per frame. Here, too, a characteristic change of the lindemann index occurs, with which the phase transition can also be determined.  The development of the lindemann index over the frames can then be visualized as a plot for the phase transition determination.  If the temperature of the lammps is plotted against the lindemann index, the temperature can also be read directly for the phase transition, as seen in figure 2. 
 
-```bash
-make check-safety STRICT=1
-```
+![](new_way_linde.png)
 
-or only for `safety`:
+Figure 2. 
 
-```bash
-make check-safety SAFETY_STRICT=1
-```
+With a further modification of the Welford algorithm you can also see the contribution of each atom to the lindemann index for each frame. This was especially interesting for me because atomic properties can be easily visualized with tools like OVITO. This gives one a detailed view of the phase transition. This is especially interesting for the investigation of nanoparticles during the phase transition, as they often start melting from the surface. This is where the method in combination with ovito offers a good starting point for further investigations.
 
-multiple
+Furthermore, computational costs can be reduced by using one heat ramp instead of many trajectories with discrete temperatures. As an example, see fig 1 and 2. In figure 1 12 trajectories with different temperatures were chosen to determine the phase transition. Near the phase transition the step width was reduced for a better determination of the phase transition. Each trajectory has 50k steps, i.e. 600k in total, whereas in figure 2 the heatramp has only 200k steps. 
 
-```bash
-make check-safety PIP_STRICT=1 SAFETY_STRICT=1
-```
 
-> List of flags for `check-safety` (can be set to `1` or `0`): `STRICT`, `POETRY_STRICT`, `PIP_STRICT`, `SAFETY_STRICT`, `BANDIT_STRICT`.
+## Background
 
-</p>
-</details>
+A key problem with the measurement of the melting point of nanoparticles is that with decreasing size of a given nanoparticle the phase transition, defined as the temperature of a sudden change in the enthalpy, becomes less pronounced. This is caused by the surface effect: for a given cluster the surface area is larger compared to a bulk structure of the same size. Melting does not take place all at once, but is a longer melt transition and no longer really a melting point. 
 
-<details>
-<summary>4. Check the codestyle</summary>
-<p>
+The Lindemann index, stated in the following equation presents a solution for this problem. It describes the root-mean-square (rms) fluctuation of the bonds or interatomic distance in the system over time (or temperature, if the temperature of the system changes as the simulation progresses). The Lindemann index is a more robust method to determine the melting point of nanoparticles, opposed to the enthalpy. Accordingly the Lindemann index is often considered, when the melting point of nano-particles is of interest. The index is defined as, 
 
-The command is similar to `check-safety` but to check the code style, obviously. It uses `Black`, `Darglint`, `Isort`, and `Mypy` inside.
+<a href="https://www.codecogs.com/eqnedit.php?latex={\langle&space;q_{i}&space;\rangle_{\text{atoms}}={\frac&space;{1}{N(N-1)}}\sum&space;_{j\neq&space;i}{\frac&space;{\sqrt&space;{\langle&space;r_{ij}^{2}\rangle&space;-\langle&space;r_{ij}\rangle&space;^{2}}}{\langle&space;r_{ij}\rangle&space;}}}&space;~." target="_blank"><img src="https://latex.codecogs.com/gif.latex?{\langle&space;q_{i}&space;\rangle_{\text{atoms}}={\frac&space;{1}{N(N-1)}}\sum&space;_{j\neq&space;i}{\frac&space;{\sqrt&space;{\langle&space;r_{ij}^{2}\rangle&space;-\langle&space;r_{ij}\rangle&space;^{2}}}{\langle&space;r_{ij}\rangle&space;}}}&space;~." title="{\langle q_{i} \rangle_{\text{atoms}}={\frac {1}{N(N-1)}}\sum _{j\neq i}{\frac {\sqrt {\langle r_{ij}^{2}\rangle -\langle r_{ij}\rangle ^{2}}}{\langle r_{ij}\rangle }}} ~." /></a>
 
-```bash
-make check-style
-```
+where <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\fn_phv&space;\large&space;N" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\fn_phv&space;\large&space;N" title="\large N" /></a> is the number of atoms in the nano particle. <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\fn_phv&space;\large&space;r_{ij}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\fn_phv&space;\large&space;r_{ij}" title="\large r_{ij}" /></a> is the distance between atom i and atom j. The brackets <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\fn_phv&space;\large&space;\langle~\rangle" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\fn_phv&space;\large&space;\langle~\rangle" title="\large \langle~\rangle" /></a> representing a time or temperature average. The rms of the bond fluctuation is considerable lower for a solid than for a liquid, due to restrained degrees of freedom. In a solid, the atoms hold on to their position and only fluctuate around their equilibrium positions. During the melting process the atoms become more mobile and are able to leave their original position. The translation movement of atoms is magnitudes larger than that of the bond fluctuations of a solid. As a result, the Lindemann index rises dramatically at the melting point and therefore gives a suitable observable to determine the transition phase. In effect, the Lindemann index measures a sort of average difussion coefficient for the atoms in the system.
 
-It may also contain the `STRICT` flag.
-
-```bash
-make check-style STRICT=1
-```
-
-> List of flags for `check-style` (can be set to `1` or `0`): `STRICT`, `BLACK_STRICT`, `DARGLINT_STRICT`, `ISORT_STRICT`, `MYPY_STRICT`.
-
-</p>
-</details>
-
-<details>
-<summary>5. Run all the codestyle formaters</summary>
-<p>
-
-Codestyle uses `pre-commit` hooks, so ensure you've run `make install` before.
-
-```bash
-make codestyle
-```
-
-</p>
-</details>
-
-<details>
-<summary>6. Run tests</summary>
-<p>
-
-```bash
-make test
-```
-
-</p>
-</details>
-
-<details>
-<summary>7. Run all the linters</summary>
-<p>
-
-```bash
-make lint
-```
-
-the same as:
-
-```bash
-make test && make check-safety && make check-style
-```
-
-> List of flags for `lint` (can be set to `1` or `0`): `STRICT`, `POETRY_STRICT`, `PIP_STRICT`, `SAFETY_STRICT`, `BANDIT_STRICT`, `BLACK_STRICT`, `DARGLINT_STRICT`, `ISORT_STRICT`, `MYPY_STRICT`.
-
-</p>
-</details>
-
-<details>
-<summary>8. Build docker</summary>
-<p>
-
-```bash
-make docker
-```
-
-which is equivalent to:
-
-```bash
-make docker VERSION=latest
-```
-
-More information [here](https://github.com/N720720/lindemann/tree/master/docker).
-
-</p>
-</details>
-
-<details>
-<summary>9. Cleanup docker</summary>
-<p>
-
-```bash
-make clean_docker
-```
-
-or to remove all build
-
-```bash
-make clean
-```
-
-More information [here](https://github.com/N720720/lindemann/tree/master/docker).
-
-</p>
-</details>
-
-## 📈 Releases
-
-You can see the list of available releases on the [GitHub Releases](https://github.com/N720720/lindemann/releases) page.
-
-We follow [Semantic Versions](https://semver.org/) specification.
-
-We use [`Release Drafter`](https://github.com/marketplace/actions/release-drafter). As pull requests are merged, a draft release is kept up-to-date listing the changes, ready to publish when you’re ready. With the categories option, you can categorize pull requests in release notes using labels.
-
-For Pull Request this labels are configured, by default:
-
-|               **Label**               |  **Title in Releases**  |
-|:-------------------------------------:|:----------------------:|
-| `enhancement`, `feature`              | 🚀 Features             |
-| `bug`, `refactoring`, `bugfix`, `fix` | 🔧 Fixes & Refactoring  |
-| `build`, `ci`, `testing`              | 📦 Build System & CI/CD |
-| `breaking`                            | 💥 Breaking Changes     |
-| `documentation`                       | 📝 Documentation        |
-| `dependencies`                        | ⬆️ Dependencies updates |
-
-You can update it in [`release-drafter.yml`](https://github.com/N720720/lindemann/blob/master/.github/release-drafter.yml).
-
-GitHub creates the `bug`, `enhancement`, and `documentation` labels for you. Dependabot creates the `dependencies` label. Create the remaining labels on the Issues tab of your GitHub repository, when you need them.
+A key problem with much of the literature regarding the Lindemann index, is that there is a uncertainty of where to define the phase transition within a Lindemann plot. On the grounds that the melting point is a macroscopic definition for bulk structures. But here nanoparticles differ: because of their relative small size, compared to bulk structures, melting can occur fist on their relative large surface, compared to the volume they obtain and followed by the melting of core of the particle. Therefore a temperature range, rather then a melting point, is observed, as stated by Neyts in their work.    
 
 ## 🛡 License
 
 [![License](https://img.shields.io/github/license/N720720/lindemann)](https://github.com/N720720/lindemann/blob/master/LICENSE)
 
-This project is licensed under the terms of the `MIT` license. See [LICENSE](https://github.com/N720720/lindemann/blob/master/LICENSE) for more details.
+This project is licensed under the terms of the `GPLv3` license. See [LICENSE](https://github.com/N720720/lindemann/blob/master/LICENSE) for more details.
 
 ## 📃 Citation
 
 ```
 @misc{lindemann,
-  author = {N720720},
+  author = {Sebastian Thurm},
   title = {lindemann is a python package to calculate the Lindemann index  of a lammps trajectory as well as the progression of the Lindemann index per frame of temperature ramps  for phase transition analysis.},
   year = {2020},
   publisher = {GitHub},
@@ -366,4 +120,15 @@ This project is licensed under the terms of the `MIT` license. See [LICENSE](htt
 
 ## Credits
 
-This project was generated with [`python-package-template`](https://github.com/TezRomacH/python-package-template).
+The Lindemann index is introduced in the following paper,\
+F. A. Lindemann, *Zeitschrift für Phys.* **1910**, *11*, 609–612.\
+This package is based on the work from [`ybyygu`](https://github.com/ybyygu/lindemann-index)
+and [`whashi44`](https://github.com/whashi44/lindemann) on calculating the Lindemann index.\
+The visualisations in this Readme are made with [`Ovito`](https://www.ovito.org/).\
+A. Stukowski, *Model. Simul. Mater. Sci. Eng.* **2010**, *18*, 15012. [`link`](https://iopscience.iop.org/article/10.1088/0965-0393/18/1/015012).\
+This project was generated with [`python-package-template`](https://github.com/TezRomacH/python-package-template).\
+The Welford Algorith can be found in:\
+Donald E. Knuth ,*The art of computer programming*, volume 2 (3rd ed.): seminumerical algorithms, Addison-Wesley Longman Publishing Co, **1997**, 232.
+
+
+
