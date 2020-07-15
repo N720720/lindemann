@@ -12,7 +12,7 @@ readme = "README.md"
 authors = [
   "N720720 <s.thurm@protonmail.com>"
 ]
-license = "GPLv3"
+license = "GPL-3.0-or-later"
 repository = "https://github.com/N720720/lindemann"
 homepage = "https://github.com/N720720/lindemann"
 
