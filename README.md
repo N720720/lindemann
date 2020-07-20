@@ -19,6 +19,8 @@ lindemann is a python package to calculate the Lindemann index  of a lammps traj
 
 ## Installation
 
+It requires python 3.7
+
 ```bash
 pip install lindemann
 ```
