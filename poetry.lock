@@ -609,7 +609,7 @@ description = "Render rich text, tables, progress bars, syntax highlighting, mar
 name = "rich"
 optional = false
 python-versions = ">=3.6,<4.0"
-version = "4.1.0"
+version = "4.2.0"
 
 [package.dependencies]
 colorama = ">=0.4.0,<0.5.0"
@@ -1221,8 +1221,8 @@ requests = [
     {file = "requests-2.24.0.tar.gz", hash = "sha256:b3559a131db72c33ee969480840fff4bb6dd111de7dd27c8ee1f820f4f00231b"},
 ]
 rich = [
-    {file = "rich-4.1.0-py3-none-any.whl", hash = "sha256:e3ad462f3933dd86cab7036c62fde736ba41590b074dc5a0ff5a907f15ecf128"},
-    {file = "rich-4.1.0.tar.gz", hash = "sha256:710aea2fbee45acaa4eea181d9f22856f3262cc4a5e8f9fa29661e5fb9a98c9f"},
+    {file = "rich-4.2.0-py3-none-any.whl", hash = "sha256:42cedee27194e64ef4d83aa782525b60ac3cac4819673ab14db85b1bfd7e191e"},
+    {file = "rich-4.2.0.tar.gz", hash = "sha256:eacfa562cd02296c6f26729e37ff1d14e9b2335cd2de01afecc12b683172af7e"},
 ]
 safety = [
     {file = "safety-1.9.0-py2.py3-none-any.whl", hash = "sha256:86c1c4a031fe35bd624fce143fbe642a0234d29f7cbf7a9aa269f244a955b087"},
