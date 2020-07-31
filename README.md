@@ -12,7 +12,7 @@
 [![Semantic Versions](https://img.shields.io/badge/%F0%9F%9A%80-semantic%20versions-informational.svg)](https://github.com/N720720/lindemann/releases)
 [![License](https://img.shields.io/pypi/l/lindemann)](https://pypi/l/lindemann/)
 
-![](459_Atoms_brass.gif)
+![](images/459_Atoms_brass.gif)
 
 lindemann is a python package to calculate the Lindemann index  of a lammps trajectory as well as the progression of the Lindemann index per frame of temperature ramps  for phase transition analysis.
 </div>
@@ -61,15 +61,15 @@ Make sure you have enough memory available before you run any flags despite the 
 
 Basic usage to calculate the Lindemann Index:
 
-![](linde_t.gif)
+![](images/linde_t.gif)
 
 The package has a plotting feature. It will show the a plot Lindemann index vs. the frames. If the trajectory file is a temperature ramp, it is possible to determine the phasetransition.
 
-![](linde_p_new.gif)
+![](images/linde_p_new.gif)
 
 Usage of the of the lammpstrj file output feature to save the progression for each atom per frame into a lammps trajectory file. Afterwards the trajectory can be viewed with ovito for example, here the lindemann progression was used for the ovito color coding feature.
 
-![](demo_lammps_ovito.gif)
+![](images/demo_lammps_ovito.gif)
 ## Motivation
 
 In my research I have investigated simulated annealing of brass nanoparticles. I had to determine the melting point of many different cluster sizes and zinc compositions. For this purpose I have chosen the Lindemann index. Because of the amount of calculations I wanted a cli tool that could be easily used with mpi. Furthermore, the calculation costs were decisive for me. At the same time i wanted to get to know numba better and so i combined both in this project. numba does not really like pythonic code and can handle verbose code better.
@@ -78,14 +78,14 @@ In my research I have investigated simulated annealing of brass nanoparticles. I
 
 For the determination of the melting point of nanoparticles you can often find plots in the literature which follow the following scheme. A temperature range is defined where the phase transition is likely to take place. Then step lengths for the temperature are defined and then a trajectory is calculated for the respective temperature. If a phase transition occurs, this can be recognized by a jump of the lindemann index. As shown in figure 1
 
-![](like_in_literature.png)
+![](images/like_in_literature.png)
 
 *Figure 1.* 
 
 By working with the Lindemann index and the Welford algorithm  I realized that the development of the lindemann index can be observed across the trajectory. The Welford algorithm allows a live calculation of the mean std, which means that the development of the lindemann index can be observed with the simulation steps. Since I worked with heat ramps for simulated annaeling, I was interested in the development of the lindemann index across the frames of these trajectories. \
 This could be realized by a modification of the Welford algorithm . With this method you can observe the change of the lindemann index per frame. Here, too, a characteristic change of the lindemann index occurs, with which the phase transition can also be determined.  The development of the lindemann index over the frames can then be visualized as a plot for the phase transition determination.  If the temperature of the lammps is plotted against the lindemann index, the temperature can also be read directly for the phase transition, as seen in figure 2. 
 
-![](new_way_linde.png)
+![](images/new_way_linde.png)
 
 *Figure 2: Note the noise of the temperature was smoothed with help of [numpy.convolve](https://numpy.org/doc/stable/reference/generated/numpy.convolve.html) with a box size of 40.* 
 
