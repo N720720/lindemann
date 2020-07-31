@@ -43,7 +43,7 @@ or if installed with `Poetry`:
 poetry run [OPTIONS] TRJFILE
 ```
 
-**Precautions**
+**Precautions**:
 
 Make sure you have enough memory available before you run any flags despite the -t flag. You can check the memory use by using the `-m` or the `--mem_use` Option. The high memory use will be fixed as soon as the numpy.nanmean() function with axis is available for numba.
 
