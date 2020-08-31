@@ -38,7 +38,7 @@ typer = {extras = ["all"], version = "^0.3.0"}
 rich = ">=3.3.2,<5.0.0"
 pre-commit = "^2.6.0"
 ovito = "^3.1.1"
-numba = "^0.50.0"
+numba = ">=0.50,<0.52"
 matplotlib = "^3.2.2"
 
 [tool.poetry.dev-dependencies]
