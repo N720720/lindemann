@@ -42,7 +42,7 @@ numba = "^0.50.0"
 matplotlib = "^3.2.2"
 
 [tool.poetry.dev-dependencies]
-darglint = "^1.5.2"
+darglint = "^1.5.8"
 isort = {extras = ["pyproject"], version = "^4.3.21"}
 pyupgrade = "^2.7.2"
 black = "^19.10b0"
