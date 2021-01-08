@@ -85,7 +85,8 @@ For the determination of the melting point of nanoparticles you can often find p
 
 *Figure 1.*
 
-I realized that the development of the Lindemann index can be observed across the trajectory. The Welford algorithm allows a live calculation of the mean std, which means that the development of the Lindemann index can be observed as the simulations run. Since I worked with heat ramps for simulated annaeling, I was interested in the development of the Lindemann index across the frames of these trajectories. \
+I realized that the development of the Lindemann index can be observed across the trajectory. The Welford algorithm allows a live calculation of the mean std, which means that the development of the Lindemann index can be observed as the simulations run. Since I worked with heat ramps for simulated annaeling, I was interested in the development of the Lindemann index across the frames of these trajectories.
+
 This could be realized by a modification of the Welford algorithm. With this method you can observe the change of the Lindemann index per frame. Here, too, a characteristic change of the Lindemann index occurs, with which the phase transition can also be determined. The development of the Lindemann index over the frames can then be visualized as a plot for the phase transition determination. If the temperature is plotted against the Lindemann index, the temperature can also be read directly for the phase transition, as seen in figure 2.
 
 ![](images/new_way_linde.png)
