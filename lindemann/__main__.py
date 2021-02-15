@@ -97,7 +97,7 @@ def main(
         if my_file_name:
             print("not implemented")
         else:
-            filename = "linemann_per_frame.txt"
+            filename = "lindemann_per_frame.txt"
         np.savetxt(filename, per_frames.calculate(tjr_frames))
         console.print(
             f"[magenta]lindemann index per frame saved as:[/] [bold blue]{filename}[/]"
@@ -105,7 +105,7 @@ def main(
         raise typer.Exit()
 
     if atoms:
-        filename = "linemann_per_atom.txt"
+        filename = "lindemann_per_atom.txt"
         np.savetxt(filename, per_atoms.calculate(tjr_frames))
         console.print(
             f"[magenta]lindemann index per atoms saved as:[/] [bold blue]{filename}[/]"
