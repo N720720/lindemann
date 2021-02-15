@@ -13,15 +13,15 @@ from lindemann.trajectory import read
     [
         (
             "tests/test_example/459_01.lammpstrj",
-            np.round(np.float(0.025923892565654555), 12),
+            np.round(float(0.025923892565654555), 12),
         ),
         (
             "tests/test_example/459_02.lammpstrj",
-            np.round(np.float(0.026426709832984754), 12),
+            np.round(float(0.026426709832984754), 12),
         ),
     ],
 )
-# def test_setup(trajectory: str, lindemannindex: np.float) -> bool:
+# def test_setup(trajectory: str, lindemannindex: float) -> bool:
 
 
 def test_tra(trajectory, lindemannindex):
@@ -35,11 +35,11 @@ def test_tra(trajectory, lindemannindex):
     [
         (
             "tests/test_example/459_01.lammpstrj",
-            np.round(np.float(0.025923892565654555), 12),
+            np.round(float(0.025923892565654555), 12),
         ),
         (
             "tests/test_example/459_02.lammpstrj",
-            np.round(np.float(0.026426709832984754), 12),
+            np.round(float(0.026426709832984754), 12),
         ),
     ],
 )
@@ -55,11 +55,11 @@ def test_frames(trajectory, lindemannindex):
     [
         (
             "tests/test_example/459_01.lammpstrj",
-            np.round(np.float(0.025923892565654555), 12),
+            np.round(float(0.025923892565654555), 12),
         ),
         (
             "tests/test_example/459_02.lammpstrj",
-            np.round(np.float(0.026426709832984754), 12),
+            np.round(float(0.026426709832984754), 12),
         ),
     ],
 )

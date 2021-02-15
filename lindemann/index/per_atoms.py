@@ -65,7 +65,8 @@ def lindemann_per_frames(frames: np.ndarray) -> np.ndarray:
     return lindex_array
 
 
-def calculate(indices: np.ndarray) -> np.ndarray:
+# def calculate(indices: np.ndarray) -> np.ndarray:
+def calculate(indices):
     """
     Small helper function, since numba has not implemented the np.nanmean with axis parameter 
     I cant implemnet this in the jit function for now.
