@@ -11,7 +11,7 @@ def lindemann_vs_frames(indices: np.ndarray) -> str:
     plt.xlabel("Frames")
     plt.ylabel("Lindemann index")
     plt.plot(np.arange(0, len(indices)), indices, "+")
-    # plt.tight_layout()
+    plt.tight_layout()
     # plt.show()
     plt.savefig("lindemann_per_frame.pdf")
     return "lindemann_per_frame.pdf"
