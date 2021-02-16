@@ -47,7 +47,7 @@ darglint = "^1.5.2"
 isort = {extras = ["pyproject"], version = "^4.3.21"}
 pyupgrade = "^2.7.2"
 black = "^19.10b0"
-mypy = "^0.782"
+mypy = "^0.800"
 bandit = "^1.6.2"
 safety = "^1.9.0"
 pytest = "^6.0.0"
