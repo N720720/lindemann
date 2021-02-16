@@ -422,14 +422,6 @@ importlib-metadata = {version = ">=0.12", markers = "python_version < \"3.8\""}
 dev = ["pre-commit", "tox"]
 
 [[package]]
-name = "pprintpp"
-version = "0.4.0"
-description = "A drop-in replacement for pprint that's actually pretty"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "pre-commit"
 version = "2.10.1"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
@@ -587,7 +579,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)", "win-inet-pton"]
 
 [[package]]
 name = "rich"
-version = "4.2.2"
+version = "9.11.0"
 description = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
 category = "main"
 optional = false
@@ -596,7 +588,6 @@ python-versions = ">=3.6,<4.0"
 [package.dependencies]
 colorama = ">=0.4.0,<0.5.0"
 commonmark = ">=0.9.0,<0.10.0"
-pprintpp = ">=0.4.0,<0.5.0"
 pygments = ">=2.6.0,<3.0.0"
 typing-extensions = ">=3.7.4,<4.0.0"
 
@@ -775,7 +766,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "~3.7"
-content-hash = "8d70674b9f4c11a96e3a8c867231c6032520e06d9551414e0eed8c879677c64e"
+content-hash = "03f0ed4c84402d05bacf193da278f0d7fb87722a1cfdcb3dff5ca73b66895730"
 
 [metadata.files]
 appdirs = [
@@ -1052,10 +1043,13 @@ ovito = [
     {file = "ovito-3.4.2-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:bd55c4407c8c88cbc9cbf0c6ff84ceab1b7468bbb99c5fc0a394284907699956"},
     {file = "ovito-3.4.2-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:000b56cabd5802c42f6ffd47ec1e8321e72e3af1fa115ec607f261880d22b2b6"},
     {file = "ovito-3.4.2-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:6616b58824bfd17e67c1805379cb56dd33d2978828d6d3f6d8eb9ea3d72ee574"},
+    {file = "ovito-3.4.2-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:5a0d8ced5452382f1393b2f5508d3ef9066eda4ca0fc81754a701e94322e0ff3"},
     {file = "ovito-3.4.2-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:01529614da30cbe29d72637fa9a000825a3087a458a00343657b227637e064d3"},
     {file = "ovito-3.4.2-cp37-cp37m-win_amd64.whl", hash = "sha256:c3dd7e274bea9b6dfa5704816651fd12d73e2a97dd1a72702333a7fbaf956da1"},
+    {file = "ovito-3.4.2-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:c3857b156a9ef187b51cf50a950117f6d622e896a896110532121f9ab41e804f"},
     {file = "ovito-3.4.2-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:ad2f4298e40f698d4743bd672ae01b776c05d4a9b73f6688de62c9313d44bf6b"},
     {file = "ovito-3.4.2-cp38-cp38-win_amd64.whl", hash = "sha256:889f82f888df403712734e2e54a962c417565c95a92d43f8de67113adada5ec7"},
+    {file = "ovito-3.4.2-cp39-cp39-macosx_10_14_x86_64.whl", hash = "sha256:75c38185320f302ea33160987a04d20a8bef56084cb2804f50e9bfaa9e872670"},
     {file = "ovito-3.4.2-cp39-cp39-manylinux1_x86_64.whl", hash = "sha256:6a9c44478ce49ece35c903a8ed249d97a0d9750242ad17a5cfff1194377e9a26"},
     {file = "ovito-3.4.2-cp39-cp39-win_amd64.whl", hash = "sha256:031bd4d70972600ea30f0dba2c4cf58c9727b7b159b3fff209335bdafe3528b9"},
 ]
@@ -1108,10 +1102,6 @@ pillow = [
 pluggy = [
     {file = "pluggy-0.13.1-py2.py3-none-any.whl", hash = "sha256:966c145cd83c96502c3c3868f50408687b38434af77734af1e9ca461a4081d2d"},
     {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
-]
-pprintpp = [
-    {file = "pprintpp-0.4.0-py2.py3-none-any.whl", hash = "sha256:b6b4dcdd0c0c0d75e4d7b2f21a9e933e5b2ce62b26e1a54537f9651ae5a5c01d"},
-    {file = "pprintpp-0.4.0.tar.gz", hash = "sha256:ea826108e2c7f49dc6d66c752973c3fc9749142a798d6b254e1e301cfdbc6403"},
 ]
 pre-commit = [
     {file = "pre_commit-2.10.1-py2.py3-none-any.whl", hash = "sha256:16212d1fde2bed88159287da88ff03796863854b04dc9f838a55979325a3d20e"},
@@ -1228,8 +1218,8 @@ requests = [
     {file = "requests-2.25.1.tar.gz", hash = "sha256:27973dd4a904a4f13b263a19c866c13b92a39ed1c964655f025f3f8d3d75b804"},
 ]
 rich = [
-    {file = "rich-4.2.2-py3-none-any.whl", hash = "sha256:136a02e84361b760e4c0c9090dd725f6bc76b2d5806d0da7cd3ea9bc8075cf6d"},
-    {file = "rich-4.2.2.tar.gz", hash = "sha256:89ea8935f40357d724ac8a2c0eac1f2042fc2ff63436a984042c12a9f111cce6"},
+    {file = "rich-9.11.0-py3-none-any.whl", hash = "sha256:a8ee22199562278d2f78148cacb2f9460ccac362cd4a40f705505b41daae60e0"},
+    {file = "rich-9.11.0.tar.gz", hash = "sha256:f8f08fdac6bd67dc2dd7fe976da702d748487aa9eb5d050c48b2321bc67ed659"},
 ]
 safety = [
     {file = "safety-1.10.3-py2.py3-none-any.whl", hash = "sha256:5f802ad5df5614f9622d8d71fedec2757099705c2356f862847c58c6dfe13e84"},
