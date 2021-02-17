@@ -475,14 +475,14 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "pylint"
-version = "2.6.0"
+version = "2.6.2"
 description = "python code static checker"
 category = "dev"
 optional = false
 python-versions = ">=3.5.*"
 
 [package.dependencies]
-astroid = ">=2.4.0,<=2.5"
+astroid = ">=2.4.0,<2.5"
 colorama = {version = "*", markers = "sys_platform == \"win32\""}
 isort = ">=4.2.5,<6"
 mccabe = ">=0.6,<0.7"
@@ -775,7 +775,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "~3.7"
-content-hash = "8d70674b9f4c11a96e3a8c867231c6032520e06d9551414e0eed8c879677c64e"
+content-hash = "48b3ed566b5000c4b2ba1ec3bdf184b511acf19347b89c26fb8a3fb9d9c9586a"
 
 [metadata.files]
 appdirs = [
@@ -1052,10 +1052,13 @@ ovito = [
     {file = "ovito-3.4.2-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:bd55c4407c8c88cbc9cbf0c6ff84ceab1b7468bbb99c5fc0a394284907699956"},
     {file = "ovito-3.4.2-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:000b56cabd5802c42f6ffd47ec1e8321e72e3af1fa115ec607f261880d22b2b6"},
     {file = "ovito-3.4.2-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:6616b58824bfd17e67c1805379cb56dd33d2978828d6d3f6d8eb9ea3d72ee574"},
+    {file = "ovito-3.4.2-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:5a0d8ced5452382f1393b2f5508d3ef9066eda4ca0fc81754a701e94322e0ff3"},
     {file = "ovito-3.4.2-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:01529614da30cbe29d72637fa9a000825a3087a458a00343657b227637e064d3"},
     {file = "ovito-3.4.2-cp37-cp37m-win_amd64.whl", hash = "sha256:c3dd7e274bea9b6dfa5704816651fd12d73e2a97dd1a72702333a7fbaf956da1"},
+    {file = "ovito-3.4.2-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:c3857b156a9ef187b51cf50a950117f6d622e896a896110532121f9ab41e804f"},
     {file = "ovito-3.4.2-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:ad2f4298e40f698d4743bd672ae01b776c05d4a9b73f6688de62c9313d44bf6b"},
     {file = "ovito-3.4.2-cp38-cp38-win_amd64.whl", hash = "sha256:889f82f888df403712734e2e54a962c417565c95a92d43f8de67113adada5ec7"},
+    {file = "ovito-3.4.2-cp39-cp39-macosx_10_14_x86_64.whl", hash = "sha256:75c38185320f302ea33160987a04d20a8bef56084cb2804f50e9bfaa9e872670"},
     {file = "ovito-3.4.2-cp39-cp39-manylinux1_x86_64.whl", hash = "sha256:6a9c44478ce49ece35c903a8ed249d97a0d9750242ad17a5cfff1194377e9a26"},
     {file = "ovito-3.4.2-cp39-cp39-win_amd64.whl", hash = "sha256:031bd4d70972600ea30f0dba2c4cf58c9727b7b159b3fff209335bdafe3528b9"},
 ]
@@ -1130,8 +1133,8 @@ pygments = [
     {file = "Pygments-2.8.0.tar.gz", hash = "sha256:37a13ba168a02ac54cc5891a42b1caec333e59b66addb7fa633ea8a6d73445c0"},
 ]
 pylint = [
-    {file = "pylint-2.6.0-py3-none-any.whl", hash = "sha256:bfe68f020f8a0fece830a22dd4d5dddb4ecc6137db04face4c3420a46a52239f"},
-    {file = "pylint-2.6.0.tar.gz", hash = "sha256:bb4a908c9dadbc3aac18860550e870f58e1a02c9f2c204fdf5693d73be061210"},
+    {file = "pylint-2.6.2-py3-none-any.whl", hash = "sha256:e71c2e9614a4f06e36498f310027942b0f4f2fde20aebb01655b31edc63b9eaf"},
+    {file = "pylint-2.6.2.tar.gz", hash = "sha256:718b74786ea7ed07aa0c58bf572154d4679f960d26e9641cc1de204a30b87fc9"},
 ]
 pyparsing = [
     {file = "pyparsing-2.4.7-py2.py3-none-any.whl", hash = "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"},
