@@ -44,7 +44,7 @@ numpy = "^1.20.1"
 
 [tool.poetry.dev-dependencies]
 darglint = "^1.5.2"
-isort = {extras = ["pyproject"], version = "^4.3.21"}
+isort = {extras = ["pyproject"], version = "^5.7.0"}
 pyupgrade = "^2.7.2"
 black = "^19.10b0"
 mypy = "^0.782"
