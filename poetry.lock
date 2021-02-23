@@ -222,18 +222,19 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
 name = "importlib-metadata"
-version = "1.7.0"
+version = "3.4.0"
 description = "Read metadata from Python packages"
 category = "main"
 optional = false
-python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
+python-versions = ">=3.6"
 
 [package.dependencies]
+typing-extensions = {version = ">=3.6.4", markers = "python_version < \"3.8\""}
 zipp = ">=0.5"
 
 [package.extras]
-docs = ["sphinx", "rst.linker"]
-testing = ["packaging", "pep517", "importlib-resources (>=1.3)"]
+docs = ["sphinx", "jaraco.packaging (>=8.2)", "rst.linker (>=1.9)"]
+testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pytest-cov", "pytest-enabler", "packaging", "pep517", "pyfakefs", "flufl.flake8", "pytest-black (>=0.3.7)", "pytest-mypy", "importlib-resources (>=1.3)"]
 
 [[package]]
 name = "iniconfig"
@@ -775,7 +776,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "~3.7"
-content-hash = "8d70674b9f4c11a96e3a8c867231c6032520e06d9551414e0eed8c879677c64e"
+content-hash = "37d3fa3d4a96082a72c37e12fc7900867491dc0c29723e364f3cf913869ca5d2"
 
 [metadata.files]
 appdirs = [
@@ -863,8 +864,8 @@ idna = [
     {file = "idna-2.10.tar.gz", hash = "sha256:b307872f855b18632ce0c21c5e45be78c0ea7ae4c15c828c20788b26921eb3f6"},
 ]
 importlib-metadata = [
-    {file = "importlib_metadata-1.7.0-py2.py3-none-any.whl", hash = "sha256:dc15b2969b4ce36305c51eebe62d418ac7791e9a157911d58bfb1f9ccd8e2070"},
-    {file = "importlib_metadata-1.7.0.tar.gz", hash = "sha256:90bb658cdbbf6d1735b6341ce708fc7024a3e14e99ffdc5783edea9f9b077f83"},
+    {file = "importlib_metadata-3.4.0-py3-none-any.whl", hash = "sha256:ace61d5fc652dc280e7b6b4ff732a9c2d40db2c0f92bc6cb74e07b73d53a1771"},
+    {file = "importlib_metadata-3.4.0.tar.gz", hash = "sha256:fa5daa4477a7414ae34e95942e4dd07f62adf589143c875c133c1e53c4eff38d"},
 ]
 iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
@@ -1052,10 +1053,13 @@ ovito = [
     {file = "ovito-3.4.2-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:bd55c4407c8c88cbc9cbf0c6ff84ceab1b7468bbb99c5fc0a394284907699956"},
     {file = "ovito-3.4.2-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:000b56cabd5802c42f6ffd47ec1e8321e72e3af1fa115ec607f261880d22b2b6"},
     {file = "ovito-3.4.2-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:6616b58824bfd17e67c1805379cb56dd33d2978828d6d3f6d8eb9ea3d72ee574"},
+    {file = "ovito-3.4.2-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:5a0d8ced5452382f1393b2f5508d3ef9066eda4ca0fc81754a701e94322e0ff3"},
     {file = "ovito-3.4.2-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:01529614da30cbe29d72637fa9a000825a3087a458a00343657b227637e064d3"},
     {file = "ovito-3.4.2-cp37-cp37m-win_amd64.whl", hash = "sha256:c3dd7e274bea9b6dfa5704816651fd12d73e2a97dd1a72702333a7fbaf956da1"},
+    {file = "ovito-3.4.2-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:c3857b156a9ef187b51cf50a950117f6d622e896a896110532121f9ab41e804f"},
     {file = "ovito-3.4.2-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:ad2f4298e40f698d4743bd672ae01b776c05d4a9b73f6688de62c9313d44bf6b"},
     {file = "ovito-3.4.2-cp38-cp38-win_amd64.whl", hash = "sha256:889f82f888df403712734e2e54a962c417565c95a92d43f8de67113adada5ec7"},
+    {file = "ovito-3.4.2-cp39-cp39-macosx_10_14_x86_64.whl", hash = "sha256:75c38185320f302ea33160987a04d20a8bef56084cb2804f50e9bfaa9e872670"},
     {file = "ovito-3.4.2-cp39-cp39-manylinux1_x86_64.whl", hash = "sha256:6a9c44478ce49ece35c903a8ed249d97a0d9750242ad17a5cfff1194377e9a26"},
     {file = "ovito-3.4.2-cp39-cp39-win_amd64.whl", hash = "sha256:031bd4d70972600ea30f0dba2c4cf58c9727b7b159b3fff209335bdafe3528b9"},
 ]
