@@ -43,7 +43,7 @@ numba = "^0.52.0"
 numpy = "^1.20.1"
 
 [tool.poetry.dev-dependencies]
-darglint = "^1.5.2"
+darglint = "^1.7.0"
 isort = {extras = ["pyproject"], version = "^4.3.21"}
 pyupgrade = "^2.7.2"
 black = "^19.10b0"
