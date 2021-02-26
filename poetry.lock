@@ -363,7 +363,7 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "ovito"
-version = "3.4.2"
+version = "3.4.3"
 description = "A scientific data visualization and analysis software for particle-based simulations"
 category = "main"
 optional = false
@@ -1050,18 +1050,18 @@ numpy = [
     {file = "numpy-1.20.1.zip", hash = "sha256:3bc63486a870294683980d76ec1e3efc786295ae00128f9ea38e2c6e74d5a60a"},
 ]
 ovito = [
-    {file = "ovito-3.4.2-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:bd55c4407c8c88cbc9cbf0c6ff84ceab1b7468bbb99c5fc0a394284907699956"},
-    {file = "ovito-3.4.2-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:000b56cabd5802c42f6ffd47ec1e8321e72e3af1fa115ec607f261880d22b2b6"},
-    {file = "ovito-3.4.2-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:6616b58824bfd17e67c1805379cb56dd33d2978828d6d3f6d8eb9ea3d72ee574"},
-    {file = "ovito-3.4.2-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:5a0d8ced5452382f1393b2f5508d3ef9066eda4ca0fc81754a701e94322e0ff3"},
-    {file = "ovito-3.4.2-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:01529614da30cbe29d72637fa9a000825a3087a458a00343657b227637e064d3"},
-    {file = "ovito-3.4.2-cp37-cp37m-win_amd64.whl", hash = "sha256:c3dd7e274bea9b6dfa5704816651fd12d73e2a97dd1a72702333a7fbaf956da1"},
-    {file = "ovito-3.4.2-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:c3857b156a9ef187b51cf50a950117f6d622e896a896110532121f9ab41e804f"},
-    {file = "ovito-3.4.2-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:ad2f4298e40f698d4743bd672ae01b776c05d4a9b73f6688de62c9313d44bf6b"},
-    {file = "ovito-3.4.2-cp38-cp38-win_amd64.whl", hash = "sha256:889f82f888df403712734e2e54a962c417565c95a92d43f8de67113adada5ec7"},
-    {file = "ovito-3.4.2-cp39-cp39-macosx_10_14_x86_64.whl", hash = "sha256:75c38185320f302ea33160987a04d20a8bef56084cb2804f50e9bfaa9e872670"},
-    {file = "ovito-3.4.2-cp39-cp39-manylinux1_x86_64.whl", hash = "sha256:6a9c44478ce49ece35c903a8ed249d97a0d9750242ad17a5cfff1194377e9a26"},
-    {file = "ovito-3.4.2-cp39-cp39-win_amd64.whl", hash = "sha256:031bd4d70972600ea30f0dba2c4cf58c9727b7b159b3fff209335bdafe3528b9"},
+    {file = "ovito-3.4.3-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:af5e68e44e3288ebcd57370518bca74dfe7b5578ee6fe1ebb3b446f9c3b86bbf"},
+    {file = "ovito-3.4.3-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:c7d1b64e9c2a33ca8ba46b098d54a815e97b5130dc996c340464f38697c6ad4d"},
+    {file = "ovito-3.4.3-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:69050fbe4c0c4db417f45df680212e7c67e0932c11f653ad860035f8fb778484"},
+    {file = "ovito-3.4.3-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:4917a273ec1b41658223fb29ca60ea3c25277526a9e489121983dc0bea46f52b"},
+    {file = "ovito-3.4.3-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:786a6fcabdc77639bee25674dd2bce5eae1432cb2ac6a233991b2630dbc300b7"},
+    {file = "ovito-3.4.3-cp37-cp37m-win_amd64.whl", hash = "sha256:5f7f22a868d94a16e09263bac8f773695d2a5d87db95ba7aec2bed33c6d76155"},
+    {file = "ovito-3.4.3-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:708da713428d026a7d8d9dacc81d96cbaac875bac0e8270db6723ece0351f5c3"},
+    {file = "ovito-3.4.3-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:d46322f67b06dd67c0d707aec1eba31b88f25ec757fef0edf9301b081a7f0d0f"},
+    {file = "ovito-3.4.3-cp38-cp38-win_amd64.whl", hash = "sha256:f94aab7b9819051f8a184794c0a6af66d840287aa9cfb729fb671a6668528ac6"},
+    {file = "ovito-3.4.3-cp39-cp39-macosx_10_14_x86_64.whl", hash = "sha256:0da72d80a3a0e8cae91c8c5de781cf52a857f89d6e3f9c6095830ba9ab4279b9"},
+    {file = "ovito-3.4.3-cp39-cp39-manylinux1_x86_64.whl", hash = "sha256:da1569914576086dc52e6b60b54872ecab64adac3c9f45fbd32e7d3498f83698"},
+    {file = "ovito-3.4.3-cp39-cp39-win_amd64.whl", hash = "sha256:7074ff367062b497450550e421898cdb32a36bd588b8cfe6c635697e98fd1a66"},
 ]
 packaging = [
     {file = "packaging-20.9-py2.py3-none-any.whl", hash = "sha256:67714da7f7bc052e064859c05c595155bd1ee9f69f76557e21f051443c20947a"},
