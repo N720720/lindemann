@@ -86,7 +86,7 @@ def main(
     start = time.time()
 
     print(trjfile)
-    
+    print(len(trjfile))
     if len(trjfile) == 1:
         single_process = True
         #trjfile = str(trjfile[0])
@@ -95,13 +95,14 @@ def main(
         single_process = False
         trjfile = [str(trjf) for trjf in trjfile]
         print(trjfile)
-        with Pool(4) as p:
-            tjr_frames = p.map(read.frames, trjfile)
-            tjr_frames = np.array(tjr_frames)
+        tjr_frames = [read.frames(tf) for tf in trjfile]
+        #with Pool(2) as p:
+        #    tjr_frames = p.map(read.frames, trjfile)
+            #tjr_frames = tjr_frames
     #tjr_frames = read.frames(trjfile)
 
     print(trjfile)
-    print(tjr_frames)
+    print(len(tjr_frames))
     # console.print(frames)
     #def wrap(trjfile):
     #    tjr_frames = read.frames(trjfile)
@@ -113,7 +114,7 @@ def main(
         )
         raise typer.Exit()
     if trj and not single_process:
-        with Pool(2) as p:
+        with Pool(4) as p:
             res = p.map(per_trj.calculate, tjr_frames)
             console.print(res)
         raise typer.Exit()
