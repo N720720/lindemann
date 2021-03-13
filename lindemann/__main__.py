@@ -7,6 +7,9 @@ from typing import Optional
 
 import numpy as np
 import typer
+from multiprocessing import Pool
+from pathlib import Path
+from typing import List
 from pathlib import Path
 from rich.console import Console
 
@@ -82,19 +85,25 @@ def main(
     # frames = lindemann.trajectory.read.frames(trjfile)
     start = time.time()
 
+    print(trjfile)
+    
     if len(trjfile) == 1:
         single_process = True
-        tjr_frames = read.frames(trjfile[0])
+        #trjfile = str(trjfile[0])
+        tjr_frames = read.frames(str(trjfile[0]))
     else:
         single_process = False
+        trjfile = [str(trjf) for trjf in trjfile]
         with Pool(4) as p:
-            p.map(read.frames, trjfile)
+            tjr_frames = p.map(read.frames, trjfile)
     
     #tjr_frames = read.frames(trjfile)
 
-    # print(trjfile)
+    print(trjfile)
     # console.print(frames)
-
+    #def wrap(trjfile):
+    #    tjr_frames = read.frames(trjfile)
+    #    per_trj.calculate(tjr_frames)
     if trj and single_process:
 
         console.print(
@@ -103,7 +112,8 @@ def main(
         raise typer.Exit()
     if trj and not single_process:
         with Pool(4) as p:
-            console.print(p.map(per_trj.calculate, )
+            console.print(p.map(per_trj.calculate, tjr_frames))
+        raise typer.Exit()
 
     if frames:
         my_file_name = False
