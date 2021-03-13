@@ -7,6 +7,7 @@ from typing import Optional
 
 import numpy as np
 import typer
+from pathlib import Path
 from rich.console import Console
 
 from lindemann import __version__
@@ -33,7 +34,7 @@ def version_callback(value: bool):
 
 @app.command(name="")
 def main(
-    trjfile: str,
+    trjfile: List[Path],
     trj: bool = typer.Option(
         False,
         "-t",
@@ -80,17 +81,29 @@ def main(
     # frames = read.frames(trjfile)
     # frames = lindemann.trajectory.read.frames(trjfile)
     start = time.time()
-    tjr_frames = read.frames(trjfile)
+
+    if len(trjfile) == 1:
+        single_process = True
+        tjr_frames = read.frames(trjfile[0])
+    else:
+        single_process = False
+        with Pool(4) as p:
+            p.map(read.frames, trjfile)
+    
+    #tjr_frames = read.frames(trjfile)
 
     # print(trjfile)
     # console.print(frames)
 
-    if trj:
+    if trj and single_process:
 
         console.print(
             f"[magenta]lindemann index for the Trajectory:[/] [bold blue]{per_trj.calculate(tjr_frames)}[/]"
         )
         raise typer.Exit()
+    if trj and not single_process:
+        with Pool(4) as p:
+            console.print(p.map(per_trj.calculate, )
 
     if frames:
         my_file_name = False
