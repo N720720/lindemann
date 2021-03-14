@@ -3,14 +3,13 @@
 import random
 import time
 from enum import Enum
-from typing import Optional
+from multiprocessing import Pool
+from os import sched_getaffinity
+from pathlib import Path
+from typing import List, Optional
 
 import numpy as np
 import typer
-from multiprocessing import Pool
-from pathlib import Path
-from typing import List
-from pathlib import Path
 from rich.console import Console
 
 from lindemann import __version__
@@ -85,28 +84,22 @@ def main(
     # frames = lindemann.trajectory.read.frames(trjfile)
     start = time.time()
 
-    print(trjfile)
-    print(len(trjfile))
+    n_cores = len(sched_getaffinity(0))
+    len_trjfiles = len(trjfile)
+
+    if len_trjfiles > n_cores:
+        n_cores = n_cores
+    else:
+        n_cores = len_trjfiles
+
     if len(trjfile) == 1:
         single_process = True
-        #trjfile = str(trjfile[0])
         tjr_frames = read.frames(str(trjfile[0]))
     else:
         single_process = False
         trjfile = [str(trjf) for trjf in trjfile]
-        print(trjfile)
         tjr_frames = [read.frames(tf) for tf in trjfile]
-        #with Pool(2) as p:
-        #    tjr_frames = p.map(read.frames, trjfile)
-            #tjr_frames = tjr_frames
-    #tjr_frames = read.frames(trjfile)
 
-    print(trjfile)
-    print(len(tjr_frames))
-    # console.print(frames)
-    #def wrap(trjfile):
-    #    tjr_frames = read.frames(trjfile)
-    #    per_trj.calculate(tjr_frames)
     if trj and single_process:
 
         console.print(
@@ -114,12 +107,13 @@ def main(
         )
         raise typer.Exit()
     if trj and not single_process:
-        with Pool(4) as p:
+        with Pool(n_cores) as p:
+            console.print(f"Using {n_cores} cores")
             res = p.map(per_trj.calculate, tjr_frames)
             console.print(res)
         raise typer.Exit()
 
-    if frames:
+    if frames and single_process:
         my_file_name = False
         if my_file_name:
             print("not implemented")
@@ -130,30 +124,42 @@ def main(
             f"[magenta]lindemann index per frame saved as:[/] [bold blue]{filename}[/]"
         )
         raise typer.Exit()
+    else:
+        print("multiprocessing is implemented only for the -t flag")
+        raise typer.Exit()
 
-    if atoms:
+    if atoms and single_process:
         filename = "lindemann_per_atom.txt"
         np.savetxt(filename, per_atoms.calculate(tjr_frames))
         console.print(
             f"[magenta]lindemann index per atoms saved as:[/] [bold blue]{filename}[/]"
         )
         raise typer.Exit()
+    else:
+        print("multiprocessing is implemented only for the -t flag")
+        raise typer.Exit()
 
-    if plot:
+    if plot and single_process:
         indices = per_frames.calculate(tjr_frames)
 
         console.print(
             f"[magenta]Saved file as:[/] [bold blue]{plt_plot.lindemann_vs_frames(indices)}[/]"
         )
         raise typer.Exit()
+    else:
+        print("multiprocessing is implemented only for the -t flag")
+        raise typer.Exit()
 
-    if lammpstrj:
+    if lammpstrj and single_process:
         indices_per_atom = per_atoms.calculate(tjr_frames)
 
         console.print(f"[magenta]{save.to_lammps(trjfile,indices_per_atom)}[/]")
         raise typer.Exit()
+    else:
+        print("multiprocessing is implemented only for the -t flag")
+        raise typer.Exit()
 
-    if timeit:
+    if timeit and single_process:
 
         linde_for_time = per_trj.calculate(tjr_frames)
         time_diff = time.time() - start
@@ -161,73 +167,16 @@ def main(
             f"[magenta]lindemann index for the Trajectory:[/] [bold blue]{linde_for_time}[/] \n[magenta]Runtime:[/] [bold green]{time_diff}[/]"
         )
         raise typer.Exit()
+    else:
+        print("multiprocessing is implemented only for the -t flag")
+        raise typer.Exit()
 
-    if mem_useage:
+    if mem_useage and single_process:
 
         mem_use_in_gb = mem_use.in_gb(tjr_frames)
 
         console.print(f"[magenta]memory use:[/] [bold blue]{mem_use_in_gb}[/]")
         raise typer.Exit()
-
-
-'''
-class Color(str, Enum):
-    white = "white"
-    red = "red"
-    cyan = "cyan"
-    magenta = "magenta"
-    yellow = "yellow"
-    green = "green"
-
-
-app = typer.Typer(
-    name="lindemann",
-    help="lindemann is a python package to calculate the Lindemann index  of a lammps trajectory as well as the progression of the Lindemann index per frame of temperature ramps  for phase transition analysis.",
-    add_completion=False,
-)
-console = Console()
-
-
-def version_callback(value: bool):
-    """Prints the version of the package."""
-    if value:
-        console.print(
-            f"[magenta]lindemann[/] version: [bold blue]{__version__}[/]"
-        )
+    else:
+        print("multiprocessing is implemented only for the -t flag")
         raise typer.Exit()
-
-
-@app.command(name="")
-def main(
-    trjfile: str = typer.Argument(
-        None, help="The Trajectory file you want to process.",
-    ),
-    version: bool = typer.Option(
-        None,
-        "-v",
-        "--version",
-        callback=version_callback,
-        is_eager=True,
-        help="Prints the version of the lindemann package.",
-    ),
-    index: bool = typer.Option(
-        None,
-        "-i",
-        "--index",
-        help="Calculates the lindemann index for the given lammps trajectory.",
-    ),
-):
-    """Prints a greeting for a giving trjfile."""
-    trjfile: str = trjfile
-
-    console.print(trjfile)
-    # my_frames = frames.frames(trjfile)
-    # indices = lindemann_process_frames(
-    #    my_frames, len(my_frames), len(my_frames)
-    # )
-    # ind = np.mean(np.nanmean(indices, axis=1))
-    # console.print(ind)
-    # index = lindemann.index.per_trj.lindemann_process_frames(trjfile)
-    # greeting: float = index
-    # console.print(f"The lindemann index is [bold {color}]{greeting}[/]")
-'''
