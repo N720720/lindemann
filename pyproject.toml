@@ -6,7 +6,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "lindemann"
-version = "0.3.1"
+version = "0.3.3"
 description = "lindemann is a python package to calculate the Lindemann index  of a lammps trajectory as well as the progression of the Lindemann index per frame of temperature ramps  for phase transition analysis."
 readme = "README.md"
 authors = [
@@ -54,6 +54,7 @@ safety = "^1.9.0"
 pytest = "^6.0.0"
 pylint = "^2.6.0"
 pydocstyle = "^5.0.2"
+docker = "^4.4.4"
 
 [tool.black]
 # https://github.com/psf/black
