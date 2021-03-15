@@ -47,6 +47,10 @@ poetry run [OPTIONS] TRJFILE
 
 Make sure you have enough memory available before you run any flags despite the -t flag. You can check the memory use by using the `-m` or the `--mem_use` Option. The high memory use will be fixed as soon as the numpy.nanmean() function with axis is available for numba.
 
+**Multiprocessing**:
+
+If you don't have a hpc environment available to distribute the workload, I added multiprocessing to parallize the tasks if you are using your local machine. Just add more than one filename with the -t flag. Currently multiprocessing is only implemented for the -t flag, due to the memory issues mentioned above.
+
 **Options**:
 
 * `-t`: Calculates the Lindemann-Index for the Trajectory file
