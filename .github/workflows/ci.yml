@@ -1,14 +1,9 @@
 name: CI
-on: [push, pull_request]
-
+on: pull_request
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-  automerge:
-    needs: build
+  approve:
     runs-on: ubuntu-latest
     steps:
-      - uses: fastify/github-action-merge-dependabot@v2.0.0
+      - uses: fastify/github-action-merge-dependabot@main
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
