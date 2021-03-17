@@ -46,7 +46,7 @@ pathlib = "^1.0.1"
 [tool.poetry.dev-dependencies]
 darglint = "^1.5.2"
 isort = {extras = ["pyproject"], version = "^4.3.21"}
-pyupgrade = "^2.7.2"
+pyupgrade = "^2.10.1"
 black = "^19.10b0"
 mypy = "^0.812"
 bandit = "^1.6.2"
