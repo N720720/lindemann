@@ -1,9 +1,0 @@
-name: CI
-on: pull_request
-jobs:
-  approve:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: fastify/github-action-merge-dependabot@main
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
