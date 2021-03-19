@@ -53,7 +53,7 @@ bandit = "^1.6.2"
 safety = "^1.9.0"
 pytest = "^6.0.0"
 pylint = "^2.6.0"
-pydocstyle = "^5.0.2"
+pydocstyle = "^6.0.0"
 docker = "^4.4.4"
 
 [tool.black]
