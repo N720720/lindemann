@@ -220,14 +220,14 @@ gitdb = ">=4.0.1,<5"
 
 [[package]]
 name = "identify"
-version = "2.1.4"
+version = "2.2.1"
 description = "File identification library for Python"
 category = "main"
 optional = false
 python-versions = ">=3.6.1"
 
 [package.extras]
-license = ["editdistance"]
+license = ["editdistance-s"]
 
 [[package]]
 name = "idna"
@@ -898,8 +898,8 @@ gitpython = [
     {file = "GitPython-3.1.14.tar.gz", hash = "sha256:be27633e7509e58391f10207cd32b2a6cf5b908f92d9cd30da2e514e1137af61"},
 ]
 identify = [
-    {file = "identify-2.1.4-py2.py3-none-any.whl", hash = "sha256:99d40094d8c9fc0b88b379200ecb4f8345a593878656867fa5363abc850766ab"},
-    {file = "identify-2.1.4.tar.gz", hash = "sha256:f516f69e62df018a3965a835dccfb3397ed02ddaf513584633c9acaf084be3f2"},
+    {file = "identify-2.2.1-py2.py3-none-any.whl", hash = "sha256:9cc5f58996cd359b7b72f0a5917d8639de5323917e6952a3bfbf36301b576f40"},
+    {file = "identify-2.2.1.tar.gz", hash = "sha256:1cfb05b578de996677836d5a2dde14b3dffde313cf7d2b3e793a0787a36e26dd"},
 ]
 idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},
