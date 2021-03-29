@@ -35,7 +35,7 @@ classifiers = [  # Update me
 python = ">=3.7.3,<3.9"
 importlib_metadata = {version = ">=1.6,<4.0", python = ">=3.7.3,<3.9"}
 typer = {extras = ["all"], version = "^0.3.0"}
-rich = ">=3.3.2,<10.0.0"
+rich = ">=3.3.2,<11.0.0"
 pre-commit = "^2.6.0"
 ovito = "^3.1.1"
 matplotlib = "^3.2.2"
