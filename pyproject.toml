@@ -52,7 +52,7 @@ mypy = "^0.812"
 bandit = "^1.6.2"
 safety = "^1.9.0"
 pytest = "^6.0.0"
-pylint = "^2.6.0"
+pylint = "^2.7.4"
 pydocstyle = "^6.0.0"
 docker = "^4.4.4"
 
