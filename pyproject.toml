@@ -44,7 +44,7 @@ numpy = "^1.20.1"
 pathlib = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
-darglint = "^1.5.2"
+darglint = "^1.8.0"
 isort = {extras = ["pyproject"], version = "^4.3.21"}
 pyupgrade = "^2.11.0"
 black = "^19.10b0"
