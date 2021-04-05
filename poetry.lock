@@ -530,7 +530,7 @@ shiboken2 = "5.15.2"
 
 [[package]]
 name = "pytest"
-version = "6.2.2"
+version = "6.2.3"
 description = "pytest: simple powerful testing with Python"
 category = "dev"
 optional = false
@@ -814,7 +814,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7.3,<3.9"
-content-hash = "3f21c7c407ad1cebba35fa0625c53e65c12b071ebbb71a6c8b109effe32ac0b7"
+content-hash = "250d96c3636937b8842a754fed07ee99e0909f407dc0c5d4927d234cdf0fa6dc"
 
 [metadata.files]
 appdirs = [
@@ -1205,8 +1205,8 @@ pyside2 = [
     {file = "PySide2-5.15.2-5.15.2-cp35.cp36.cp37.cp38.cp39-none-win_amd64.whl", hash = "sha256:1316aa22dd330df096daf7b0defe9c00297a66e0b4907f057aaa3e88c53d1aff"},
 ]
 pytest = [
-    {file = "pytest-6.2.2-py3-none-any.whl", hash = "sha256:b574b57423e818210672e07ca1fa90aaf194a4f63f3ab909a2c67ebb22913839"},
-    {file = "pytest-6.2.2.tar.gz", hash = "sha256:9d1edf9e7d0b84d72ea3dbcdfd22b35fb543a5e8f2a60092dd578936bf63d7f9"},
+    {file = "pytest-6.2.3-py3-none-any.whl", hash = "sha256:6ad9c7bdf517a808242b998ac20063c41532a570d088d77eec1ee12b0b5574bc"},
+    {file = "pytest-6.2.3.tar.gz", hash = "sha256:671238a46e4df0f3498d1c3270e5deb9b32d25134c99b7d75370a68cfbe9b634"},
 ]
 python-dateutil = [
     {file = "python-dateutil-2.8.1.tar.gz", hash = "sha256:73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c"},
