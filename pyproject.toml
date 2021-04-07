@@ -54,7 +54,7 @@ safety = "^1.9.0"
 pytest = "^6.2.3"
 pylint = "^2.7.4"
 pydocstyle = "^6.0.0"
-docker = "^4.4.4"
+docker = "^5.0.0"
 
 [tool.black]
 # https://github.com/psf/black
