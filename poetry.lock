@@ -562,7 +562,7 @@ six = ">=1.5"
 
 [[package]]
 name = "pyupgrade"
-version = "2.12.0"
+version = "2.18.3"
 description = "A tool to automatically upgrade syntax for newer versions."
 category = "dev"
 optional = false
@@ -813,7 +813,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7.3,<3.9"
-content-hash = "0ead4bdec323ca47afdc559904e75cf3c00f1f8c1e19de2d6d05acbdc8e22fb2"
+content-hash = "ffc30f76ed953d472c97b54662ea7a25d3fb5fc75bafc233baa34d0eec225f07"
 
 [metadata.files]
 appdirs = [
@@ -1212,8 +1212,8 @@ python-dateutil = [
     {file = "python_dateutil-2.8.1-py2.py3-none-any.whl", hash = "sha256:75bb3f31ea686f1197762692a9ee6a7550b59fc6ca3a1f4b5d7e32fb98e2da2a"},
 ]
 pyupgrade = [
-    {file = "pyupgrade-2.12.0-py2.py3-none-any.whl", hash = "sha256:024fc6be99c2ccdbc1c9354ac0ab8d5b9e5bf69a5477384677b6c9d8f2ce63bf"},
-    {file = "pyupgrade-2.12.0.tar.gz", hash = "sha256:eef4d77e44e57dfbae897a9a61543be1f34701dbbe51cc18462210021bd28dcf"},
+    {file = "pyupgrade-2.18.3-py2.py3-none-any.whl", hash = "sha256:499db2e6ca9859bbf038dd9446c56fb34162ed04178a416363e94f8bc5d0fbae"},
+    {file = "pyupgrade-2.18.3.tar.gz", hash = "sha256:2e540367ac3f8720b4efb20ac2b94ec1820af45a38d7ad310892e176e01d0d84"},
 ]
 pywin32 = [
     {file = "pywin32-227-cp27-cp27m-win32.whl", hash = "sha256:371fcc39416d736401f0274dd64c2302728c9e034808e37381b5e1b22be4a6b0"},
