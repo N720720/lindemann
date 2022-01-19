@@ -1,5 +1,6 @@
 # type: ignore[attr-defined]
-"""lindemann is a python package to calculate the Lindemann index  of a lammps trajectory as well as the progression of the Lindemann index per frame of temperature ramps  for phase transition analysis."""
+"""lindemann is a Python package to calculate the Lindemann index of a LAMMPS trajectory, as well as the progression of the Lindemann index per frame or per atom and frame of temperature ramps for phase transition analysis."""
+
 
 try:
     from importlib.metadata import version, PackageNotFoundError

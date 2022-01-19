@@ -1,7 +1,6 @@
 import numpy as np
 import pytest
 
-from lindemann.example import hello
 from lindemann.index import per_atoms, per_frames, per_trj
 from lindemann.trajectory import read
 
@@ -11,14 +10,8 @@ from lindemann.trajectory import read
 @pytest.mark.parametrize(
     ("trajectory", "lindemannindex"),
     [
-        (
-            "tests/test_example/459_01.lammpstrj",
-            np.round(float(0.025923892565654555), 12),
-        ),
-        (
-            "tests/test_example/459_02.lammpstrj",
-            np.round(float(0.026426709832984754), 12),
-        ),
+        ("tests/test_example/459_01.lammpstrj", np.round(float(0.025923892565654555), 12),),
+        ("tests/test_example/459_02.lammpstrj", np.round(float(0.026426709832984754), 12),),
     ],
 )
 # def test_setup(trajectory: str, lindemannindex: float) -> bool:
@@ -33,14 +26,8 @@ def test_tra(trajectory, lindemannindex):
 @pytest.mark.parametrize(
     ("trajectory", "lindemannindex"),
     [
-        (
-            "tests/test_example/459_01.lammpstrj",
-            np.round(float(0.025923892565654555), 12),
-        ),
-        (
-            "tests/test_example/459_02.lammpstrj",
-            np.round(float(0.026426709832984754), 12),
-        ),
+        ("tests/test_example/459_01.lammpstrj", np.round(float(0.025923892565654555), 12),),
+        ("tests/test_example/459_02.lammpstrj", np.round(float(0.026426709832984754), 12),),
     ],
 )
 def test_frames(trajectory, lindemannindex):
@@ -53,19 +40,11 @@ def test_frames(trajectory, lindemannindex):
 @pytest.mark.parametrize(
     ("trajectory", "lindemannindex"),
     [
-        (
-            "tests/test_example/459_01.lammpstrj",
-            np.round(float(0.025923892565654555), 12),
-        ),
-        (
-            "tests/test_example/459_02.lammpstrj",
-            np.round(float(0.026426709832984754), 12),
-        ),
+        ("tests/test_example/459_01.lammpstrj", np.round(float(0.025923892565654555), 12),),
+        ("tests/test_example/459_02.lammpstrj", np.round(float(0.026426709832984754), 12),),
     ],
 )
 def test_atoms(trajectory, lindemannindex):
     """Example test with parametrization."""
     frame = read.frames(trajectory)
-    assert (
-        np.round(np.mean(per_atoms.calculate(frame)[-1]), 12) == lindemannindex
-    )
+    assert np.round(np.mean(per_atoms.calculate(frame)[-1]), 12) == lindemannindex

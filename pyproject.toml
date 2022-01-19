@@ -6,7 +6,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "lindemann"
-version = "0.4.0"
+version = "0.4.1"
 description = "lindemann is a python package to calculate the Lindemann index  of a lammps trajectory as well as the progression of the Lindemann index per frame of temperature ramps  for phase transition analysis."
 readme = "README.md"
 authors = [
@@ -29,19 +29,20 @@ classifiers = [  # Update me
 
 [tool.poetry.scripts]
 # Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
-"lindemann" = "lindemann.__main__:app"
+lindemann = "lindemann.main:app"
 
 [tool.poetry.dependencies]
-python = ">=3.7.3,<3.9"
+python = ">=3.7.3,<3.11"
 importlib_metadata = {version = ">=1.6,<5.0", python = ">=3.7.3,<3.9"}
 typer = {extras = ["all"], version = "^0.3.0"}
 rich = ">=3.3.2,<11.0.0"
 pre-commit = "^2.6.0"
 ovito = "^3.1.1"
 matplotlib = "^3.2.2"
-numba = ">=0.52,<0.54"
-numpy = "^1.20.1"
+numba = ">=0.52"
+numpy = ">=1.18, <1.22"
 pathlib = "^1.0.1"
+icc-rt = "^2020.0.133"
 
 [tool.poetry.dev-dependencies]
 darglint = "^1.8.0"
@@ -55,10 +56,13 @@ pytest = "^6.2.4"
 pylint = "^2.7.4"
 pydocstyle = "^6.0.0"
 docker = "^5.0.0"
+typer-cli = "^0.0.12"
+Jinja2 = "^3.0.3"
+memory-profiler = "^0.60.0"
 
 [tool.black]
 # https://github.com/psf/black
-line-length = 80
+line-length = 99
 target-version = ["py37"]
 
 [tool.isort]
@@ -70,4 +74,4 @@ default_section = "FIRSTPARTY"
 multi_line_output = 3
 force_grid_wrap = 0
 use_parentheses = true
-line_length = 80
+line_length = 99

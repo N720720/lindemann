@@ -1,11 +1,12 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
+import numpy.typing as npt
 
 mpl.use("Agg")
 
 
-def lindemann_vs_frames(indices: np.ndarray) -> str:
+def lindemann_vs_frames(indices: npt.NDArray[np.float64]) -> str:
     plt.figure(1)
     plt.title("Lindemann index per frame")
     plt.xlabel("Frames")
