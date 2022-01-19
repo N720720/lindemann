@@ -1,0 +1,2 @@
+CMDLINE /home/mono/.cache/pypoetry/virtualenvs/lindemann-ziOhi0Ln-py3.7/bin/python lindemann/__main__.py tests/test_example/
+MEM 1.738281 1642587013.5098

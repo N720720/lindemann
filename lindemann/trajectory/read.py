@@ -2,11 +2,12 @@ import os
 from typing import Optional
 
 import numpy as np
+import numpy.typing as npt
 from ovito.io import import_file
 from ovito.modifiers import SelectTypeModifier
 
 
-def frames(trjfile: str, nframes: Optional[int] = None) -> np.ndarray:
+def frames(trjfile: str, nframes: Optional[int] = None) -> npt.NDArray[np.float64]:
 
     """
     Get the frames from the lammps trajectory using ovito pipeline and import_file function.
@@ -19,9 +20,7 @@ def frames(trjfile: str, nframes: Optional[int] = None) -> np.ndarray:
     pipeline = import_file(trjfile, sort_particles=True)
     num_frame = pipeline.source.num_frames
     pipeline.modifiers.append(
-        SelectTypeModifier(
-            operate_on="particles", property="Particle Type", types={1, 2, 3}
-        )
+        SelectTypeModifier(operate_on="particles", property="Particle Type", types={1, 2, 3})
     )
     data = pipeline.compute()
     num_particle = data.particles.count

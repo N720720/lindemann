@@ -1,6 +1,7 @@
 import os
 
 import numpy as np
+import numpy.typing as npt
 from ovito.io import export_file, import_file
 from ovito.modifiers import SelectTypeModifier
 
@@ -10,7 +11,7 @@ I had big problems to get the ovito export_file module to do what I want, to put
 """
 
 
-def to_lammps(trjfile: str, indices_per_atom: np.ndarray) -> str:
+def to_lammps(trjfile: str, indices_per_atom: npt.NDArray[np.float64]) -> str:
     pipeline = import_file(trjfile, sort_particles=True)
 
     for frame, linde in enumerate(indices_per_atom):
@@ -36,10 +37,7 @@ def to_lammps(trjfile: str, indices_per_atom: np.ndarray) -> str:
     First I save the files with the ovito export_file, then I save them in a file, finally I remove the files... I know...
     """
 
-    filenames = [
-        f"lindemann_outputfile_X{frame}.dump"
-        for frame in range(len(indices_per_atom))
-    ]
+    filenames = [f"lindemann_outputfile_X{frame}.dump" for frame in range(len(indices_per_atom))]
 
     file_name = "lindemann_per_atom.lammpstrj"
     with open(file_name, "w") as outfile:

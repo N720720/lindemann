@@ -14,7 +14,7 @@
 
 ![](images/459_Atoms_brass.gif)
 
-lindemann is a Python package to calculate the Lindemann index of a LAMMPS trajectory as well as the progression of the Lindemann index per frame of temperature ramps for phase transition analysis.
+lindemann is a Python package to calculate the Lindemann index of a LAMMPS trajectory, as well as the progression of the Lindemann index per frame or per atom and frame of temperature ramps for phase transition analysis.
 </div>
 
 ## Installation
@@ -51,16 +51,20 @@ Make sure you have enough memory available before you run any flags despite the 
 
 If you don't have a hpc environment available to distribute the workload, I added multiprocessing to parallize the tasks if you are using your local machine. Just add more than one filename with the -t flag. Currently multiprocessing is only implemented for the -t flag, due to the memory issues mentioned above.
 
+**Arguments**:
+
+* `TRJFILE...`: The trajectory file(s). If no other option is selected, the lindemann index is calculated for the trajectory. Equivalent to the -t option. If you pass more than one trajectory they will be calculated in parallel. Only works with no flag or -t flag.   [required]
+
 **Options**:
 
-* `-t`: Calculates the Lindemann-Index for the Trajectory file
-* `-f`: Calculates the Lindemann-Index for each frame.
-* `-a`: Calculates the Lindemann-Index for each atom for each frame.
-* `-p`: Returns a plot Lindemann-Index vs. Frame.
-* `-l`: Saves the individual Lindemann-Index of each Atom in a lammpstrj, so it can be viewed in Ovito.
+* `-t`: Calculates the Lindemann-Index for the Trajectory file(s)  [default: False]
+* `-f`: Calculates the Lindemann-Index for each frame.  [default: False]
+* `-a`: Calculates the Lindemann-Index for each atom for each frame.  [default: False]
+* `-p`: Returns a plot Lindemann-Index vs. Frame.  [default: False]
+* `-l`: Saves the individual Lindemann-Index of each Atom in a lammpstrj, so it can be viewed in Ovito.  [default: False]
 * `-v, --version`: Prints the version of the lindemann package.
-* `-ti, -timeit`: Uses timeit module to show running time
-* `-m, --mem_use`: Calculates the memory use. Run it before you use any of the cli functionality despite the -t flag
+* `-ti, -timeit`: Uses timeit module to show running time  [default: False]
+* `-m, -mem_use`: Calculates the memory use. Run it before you use any of the cli functionality despite the -t flag  [default: False]
 * `--help`: Show this message and exit.
 
 ## Demo

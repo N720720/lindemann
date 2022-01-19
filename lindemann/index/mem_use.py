@@ -1,7 +1,8 @@
 import numpy as np
+import numpy.typing as npt
 
 
-def in_gb(frames: np.ndarray) -> str:
+def in_gb(frames: npt.NDArray[np.float64]) -> str:
     natoms = len(frames[0])
     nframes = len(frames)
-    return f"This will use {np.round((np.zeros((nframes, natoms, natoms)).nbytes/1024**3),4)} GB"
+    return f"This will use {np.round((np.zeros((nframes, natoms, natoms)).nbytes/1024**3),4)} GB"  # type: ignore[no-untyped-call]
