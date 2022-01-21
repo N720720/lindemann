@@ -7,16 +7,16 @@ from numba import float32
 
 
 @nb.njit(fastmath=True, error_model="numpy")  # type: ignore # , cache=True) #(parallel=True)
-def calculate(frames: npt.NDArray[np.float64]) -> npt.NDArray[np.float64]:
+def calculate(frames: npt.NDArray[np.float32]) -> npt.NDArray[np.float32]:
 
+    """Calculate the contribution of each atom to the lindemann index over the frames
+    
+    Args: 
+        frames: numpy array of shape(frames,atoms)
+    Returns:
+        npt.NDArray[np.float32]: Returns 1D array with the progression of the lindeman index per frame of shape(frames, atoms)
     """
-    Calculate the lindemann index for each atom AND FRAME
 
-    Return a ndarray of shape (len_frames, natoms, natoms)
-
-    Warning this can produce extremly large ndarrays in memory 
-    depending on the size of the cluster and the ammount of frames.
-    """
     first = True
     # natoms = natoms
     dt = frames.dtype
@@ -51,7 +51,7 @@ def calculate(frames: npt.NDArray[np.float64]) -> npt.NDArray[np.float64]:
                 array_mean[i, j] = mean + delta / iframe
                 # update variance
                 array_var[i, j] = var + delta * (xn - array_mean[i, j])
-        iframe += 1
+        iframe += 1  # type: ignore[assignment]
         if iframe > nframes + 1:
             break
 

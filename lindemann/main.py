@@ -153,7 +153,7 @@ def main(
         raise typer.Exit()
 
     elif timeit and single_process:
-
+        # we use float32 here since float64 is not needed for my purposes and it enables us to use nb fastmath. Change to np.float64 if you need more precision.
         start = time.time()
         linde_for_time = per_trj.calculate(tjr_frames.astype(np.float32))
         time_diff = time.time() - start

@@ -9,9 +9,15 @@ import numpy.typing as npt
 
 
 @nb.njit(fastmath=True, error_model="numpy")  # type: ignore
-def lindemann_per_atom(frames: npt.NDArray[np.float64]) -> Any:
+def lindemann_per_atom(frames: npt.NDArray[np.float32]) -> Any:
 
-    """Calculates the lindemann index for """
+    """Calculate the lindeman index
+    Args:
+        frames: numpy array of shape(frames,atoms)
+    Returns:
+        float32: returns the lindeman index
+    """
+
     dt = frames.dtype
     natoms = len(frames[0])
     nframes = len(frames)
@@ -42,7 +48,7 @@ def lindemann_per_atom(frames: npt.NDArray[np.float64]) -> Any:
                 delta = xn - mean
                 array_mean[i, j] = mean + delta / iframe
                 array_var[i, j] = var + delta * (xn - array_mean[i, j])
-        iframe += 1.0
+        iframe += 1.0  # type: ignore[assignment]
         if iframe > nframes:
             break
 
