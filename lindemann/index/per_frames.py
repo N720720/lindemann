@@ -5,31 +5,6 @@ import numpy as np
 import numpy.typing as npt
 
 
-@nb.njit
-def np_apply_along_axis(func1d, axis, arr):
-    assert arr.ndim == 2
-    assert axis in [0, 1]
-    if axis == 0:
-        result = np.empty(arr.shape[1])
-        for i in range(len(result)):
-            result[i] = func1d(arr[:, i])
-    else:
-        result = np.empty(arr.shape[0])
-        for i in range(len(result)):
-            result[i] = func1d(arr[i, :])
-    return result
-
-
-@nb.njit
-def np_mean(array, axis):
-    return np_apply_along_axis(np.mean, axis, array)
-
-
-@nb.njit
-def np_std(array, axis):
-    return np_apply_along_axis(np.std, axis, array)
-
-
 @nb.njit(fastmath=True, error_model="numpy")  # type: ignore # , cache=True) #(parallel=True)
 def calculate(frames: npt.NDArray[np.float64]) -> npt.NDArray[np.float64]:
 
