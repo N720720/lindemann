@@ -1,5 +1,6 @@
 from typing import Any
 
+import bottleneck as bn
 import numba as nb
 import numpy as np
 import numpy.typing as npt
@@ -61,4 +62,4 @@ def calculate(frames: npt.NDArray[np.float64]) -> float:
     I cant implemnet this in the jit function for now.
     """
 
-    return np.mean(np.nanmean(lindemann_per_atom(frames), axis=1))  # type: ignore[no-any-return, no-untyped-call]
+    return np.mean(bn.nanmean(lindemann_per_atom(frames), axis=1))  # type: ignore[no-any-return, no-untyped-call]
