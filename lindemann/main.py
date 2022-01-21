@@ -4,12 +4,12 @@ import random
 import time
 from enum import Enum
 from multiprocessing import Pool
-from os import sched_getaffinity
 from pathlib import Path
 from typing import List, Optional
 
 import numpy as np
 import typer
+from psutil import cpu_count
 from rich.console import Console
 
 from lindemann import __version__
@@ -80,11 +80,8 @@ def main(
     as the progression of the Lindemann index per frame or per atom and frame of temperature ramps
     for phase transition analysis.
     """
-    # frames = read.frames(trjfile)
-    # frames = lindemann.trajectory.read.frames(trjfile)
-    start = time.time()
 
-    n_cores = len(sched_getaffinity(0))
+    n_cores = cpu_count()
     len_trjfiles = len(trjfile)
 
     if len_trjfiles > n_cores:

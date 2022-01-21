@@ -50,12 +50,9 @@ def calculate(frames: npt.NDArray[np.float64]) -> npt.NDArray[np.float64]:
     len_frames = len(frames)
     array_mean = np.zeros((natoms, natoms), dtype=dt)
     array_var = np.zeros((natoms, natoms), dtype=dt)
-    # array_distance = np.zeros((natoms, natoms))
     iframe = dt.type(1)
     lindex_array = np.zeros((len_frames, natoms), dtype=dt)
     for q, coords in enumerate(frames):
-        # print("processing frame {}/{}".format(iframe, nframes))
-        # print(q)
         n, p = coords.shape
         array_distance = np.zeros((n, n), dtype=dt)
         for i in range(n):
@@ -96,7 +93,6 @@ def calculate(frames: npt.NDArray[np.float64]) -> npt.NDArray[np.float64]:
             lindemann_indices = np.zeros((natoms), dtype=dt)
             lindemann_indices = np.divide(np.sqrt(np.divide(array_var, nframes)), array_mean)
             lindemann_indices = np.asarray([np.mean(lin[lin != 0]) for lin in lindemann_indices])
-            # print(type(lindemann_indices))
-        # print(lindemann_indices.shape)
-        lindex_array[q] = lindemann_indices  # np_mean(lindemann_indices,axis=1)
+
+        lindex_array[q] = lindemann_indices
     return lindex_array

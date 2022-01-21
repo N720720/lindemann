@@ -41,7 +41,7 @@ def calculate(frames: npt.NDArray[np.float64]) -> npt.NDArray[np.float64]:
     Warning this can produce extremly large ndarrays in memory 
     depending on the size of the cluster and the ammount of frames.
     """
-    # natoms = natoms
+
     first = True
     dt = frames.dtype
     natoms = len(frames[0])
@@ -49,11 +49,9 @@ def calculate(frames: npt.NDArray[np.float64]) -> npt.NDArray[np.float64]:
     len_frames = len(frames)
     array_mean = np.zeros((natoms, natoms), dtype=dt)
     array_var = np.zeros((natoms, natoms), dtype=dt)
-    # array_distance = np.zeros((natoms, natoms))
     iframe = dt.type(1)
     lindex_array = np.zeros((len_frames), dtype=dt)
     for q, coords in enumerate(frames):
-        # print(q)
         n, p = coords.shape
         array_distance = np.zeros((n, n), dtype=dt)
         for i in range(n):
@@ -87,7 +85,7 @@ def calculate(frames: npt.NDArray[np.float64]) -> npt.NDArray[np.float64]:
                 array_var[j, i] = array_var[i, j]
 
         if first:
-            lindemann_indices = 0  # np.zeros((natoms,natoms))
+            lindemann_indices = 0
             first = False
         else:
             np.fill_diagonal(array_mean, 1)
@@ -97,17 +95,5 @@ def calculate(frames: npt.NDArray[np.float64]) -> npt.NDArray[np.float64]:
                 np.asarray([np.mean(lin[lin != 0]) for lin in lindemann_indices])  # type: ignore[attr-defined]
             )
 
-        # lindemann_indices = np.divide(np.sqrt(np.divide(array_var, nframes)), array_mean)
-        # lindemann_indices = np.nanmean(np.sqrt(array_var/nframes)/array_mean, axis=1)
-        lindex_array[q] = lindemann_indices  # np.mean(np_mean(lindemann_indices,axis=1))
+        lindex_array[q] = lindemann_indices
     return lindex_array
-
-
-# def calculate(indices: npt.NDArray[np.float64]) -> List[npt.NDArray[np.float64]]:
-#     """
-#     Small helper function, since numba has not implemented the np.nanmean with axis parameter
-#     I cant implemnet this in the jit function for now.
-#     """
-#     return lindemann_per_frames_for_each_atom(
-#         indices
-#     )  # [np.mean(np.nanmean(i, axis=1)) for i in lindemann_per_frames_for_each_atom(indices)]  # type: ignore[no-untyped-call]
