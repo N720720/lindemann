@@ -9,15 +9,20 @@ import numpy.typing as npt
 
 
 @nb.njit(fastmath=True, error_model="numpy")  # type: ignore
-def lindemann_per_atom(frames: npt.NDArray[np.float64]) -> Any:
+def lindemann_per_atom(frames: npt.NDArray[np.float32]) -> Any:
 
-    """Calculates the lindemann index for """
+    """Calculate the lindeman index
+    Args:
+        frames: numpy array of shape(frames,atoms)
+    Returns:
+        float32: returns the lindeman index
+    """
+
     dt = frames.dtype
     natoms = len(frames[0])
     nframes = len(frames)
     array_mean = np.zeros((natoms, natoms), dtype=dt)
     array_var = np.zeros((natoms, natoms), dtype=dt)
-    # array_distance = np.zeros((natoms, natoms),dtype=dt)
     iframe = dt.type(1)
     for coords in frames:
 
@@ -43,7 +48,7 @@ def lindemann_per_atom(frames: npt.NDArray[np.float64]) -> Any:
                 delta = xn - mean
                 array_mean[i, j] = mean + delta / iframe
                 array_var[i, j] = var + delta * (xn - array_mean[i, j])
-        iframe += 1.0
+        iframe += 1.0  # type: ignore[assignment]
         if iframe > nframes:
             break
 
@@ -57,9 +62,5 @@ def lindemann_per_atom(frames: npt.NDArray[np.float64]) -> Any:
 
 
 def calculate(frames: npt.NDArray[np.float64]) -> float:
-    """
-    Small helper function, since numba has not implemented the np.nanmean with axis parameter 
-    I cant implemnet this in the jit function for now.
-    """
 
     return np.mean(bn.nanmean(lindemann_per_atom(frames), axis=1))  # type: ignore[no-any-return, no-untyped-call]
