@@ -158,7 +158,7 @@ def main(
     elif timeit and single_process:
 
         start = time.time()
-        linde_for_time = per_trj.calculate(tjr_frames)
+        linde_for_time = per_trj.calculate(tjr_frames.astype(np.float32))
         time_diff = time.time() - start
 
         console.print(
