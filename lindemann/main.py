@@ -146,7 +146,7 @@ def main(
     elif lammpstrj and single_process:
         indices_per_atom = per_atoms.calculate(tjr_frames)
 
-        console.print(f"[magenta]{save.to_lammps(trjfile,indices_per_atom)}[/]")
+        console.print(f"[magenta]{save.to_lammps(str(trjfile[0]),indices_per_atom)}[/]")
         raise typer.Exit()
     elif lammpstrj and not single_process:
         print("multiprocessing is implemented only for the -t flag")
