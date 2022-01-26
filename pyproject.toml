@@ -52,7 +52,7 @@ isort = {extras = ["pyproject"], version = "^4.3.21"}
 pyupgrade = "^2.20.0"
 black = "^19.10b0"
 mypy = "^0.812"
-bandit = "^1.6.2"
+bandit = "^1.7.2"
 safety = "^1.9.0"
 pytest = "^6.2.4"
 pylint = "^2.7.4"
