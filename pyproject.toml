@@ -50,7 +50,7 @@ psutil = "^5.9.0"
 darglint = "^1.8.0"
 isort = {extras = ["pyproject"], version = "^4.3.21"}
 pyupgrade = "^2.20.0"
-black = "^19.10b0"
+black = "^21.10b0"
 mypy = "^0.812"
 bandit = "^1.7.2"
 safety = "^1.9.0"
@@ -65,7 +65,7 @@ memory-profiler = "^0.60.0"
 [tool.black]
 # https://github.com/psf/black
 line-length = 99
-target-version = ["py37"]
+target-version = ["py39"]
 
 [tool.isort]
 # https://github.com/timothycrosley/isort/
