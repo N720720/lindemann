@@ -10,8 +10,8 @@ from numba import float32
 def calculate(frames: npt.NDArray[np.float32]) -> npt.NDArray[np.float32]:
 
     """Calculate the contribution of each atom to the lindemann index over the frames
-    
-    Args: 
+
+    Args:
         frames: numpy array of shape(frames,atoms)
     Returns:
         npt.NDArray[np.float32]: Returns 1D array with the progression of the lindeman index per frame of shape(frames, atoms)
@@ -66,7 +66,7 @@ def calculate(frames: npt.NDArray[np.float32]) -> npt.NDArray[np.float32]:
         else:
             np.fill_diagonal(array_mean, 1)
             lindemann_indices = np.zeros((natoms), dtype=dt)
-            lindemann_indices = np.divide(np.sqrt(np.divide(array_var, nframes)), array_mean)
+            lindemann_indices = np.divide(np.sqrt(np.divide(array_var, iframe - 1)), array_mean)
             lindemann_indices = np.asarray([np.mean(lin[lin != 0]) for lin in lindemann_indices])
 
         lindex_array[q] = lindemann_indices
