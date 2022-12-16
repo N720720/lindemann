@@ -9,8 +9,8 @@ import numpy.typing as npt
 def calculate(frames: npt.NDArray[np.float32]) -> npt.NDArray[np.float32]:
 
     """calculate the progression of the lindemann index over the frames.
-    
-    Args: 
+
+    Args:
         frames: numpy array of shape(frames,atoms)
     Returns:
         npt.NDArray[np.float32]: Returns 1D array with the progression of the lindeman index per frame of shape(frames)
@@ -64,7 +64,7 @@ def calculate(frames: npt.NDArray[np.float32]) -> npt.NDArray[np.float32]:
         else:
             np.fill_diagonal(array_mean, 1)
             lindemann_indices = np.zeros((natoms), dtype=dt)  # type: ignore[assignment]
-            lindemann_indices = np.divide(np.sqrt(np.divide(array_var, nframes)), array_mean)  # type: ignore[assignment]
+            lindemann_indices = np.divide(np.sqrt(np.divide(array_var, iframe - 1)), array_mean)  # type: ignore[assignment]
             lindemann_indices = np.mean(
                 np.asarray([np.mean(lin[lin != 0]) for lin in lindemann_indices])  # type: ignore[attr-defined]
             )
