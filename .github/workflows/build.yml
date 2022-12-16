@@ -26,7 +26,7 @@ jobs:
         key: venv-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('poetry.lock') }}
     - name: Install dependencies
       run: |
-        sudo apt-get update && sudo apt-get install ffmpeg libsm6 libxext6  -y && sudo apt-get install libgl1-mesa-glx && sudo apt-get install -y libgl1-mesa-dev
+        sudo apt-get update && sudo apt-get install -y libgl1-mesa-dev
         poetry config virtualenvs.in-project true
         poetry install
 
