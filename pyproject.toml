@@ -60,7 +60,7 @@ pydocstyle = "^6.1.1"
 docker = "^5.0.0"
 typer-cli = "^0.0.12"
 Jinja2 = "^3.0.3"
-memory-profiler = "^0.60.0"
+memory-profiler = "^0.61.0"
 pre-commit = "^2.20.0"
 
 [tool.black]
