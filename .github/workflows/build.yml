@@ -26,6 +26,7 @@ jobs:
         key: venv-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('poetry.lock') }}
     - name: Install dependencies
       run: |
+        sudo apt-get install libgl1
         poetry config virtualenvs.in-project true
         poetry install
 
