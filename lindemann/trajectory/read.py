@@ -1,5 +1,6 @@
-import os
 from typing import Optional
+
+import os
 
 import numpy as np
 import numpy.typing as npt

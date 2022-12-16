@@ -5,7 +5,6 @@ import numpy.typing as npt
 from ovito.io import export_file, import_file
 from ovito.modifiers import SelectTypeModifier
 
-
 """
 I had big problems to get the ovito export_file module to do what I want, to put a numpy ndarry to a lammpstrj.
 """

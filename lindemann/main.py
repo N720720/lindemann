@@ -1,11 +1,12 @@
 # type: ignore[attr-defined]
 # https://github.com/numba/numba/issues/4713
+from typing import List, Optional
+
 import random
 import time
 from enum import Enum
 from multiprocessing import Pool
 from pathlib import Path
-from typing import List, Optional
 
 import numpy as np
 import typer
@@ -42,13 +43,17 @@ def main(
                 Only works with no flag or -t flag.",
     ),
     trj: bool = typer.Option(
-        False, "-t", help="Calculates the Lindemann-Index for the Trajectory file(s)",
+        False,
+        "-t",
+        help="Calculates the Lindemann-Index for the Trajectory file(s)",
     ),
     frames: bool = typer.Option(
         False, "-f", help="Calculates the Lindemann-Index for each frame."
     ),
     atoms: bool = typer.Option(
-        False, "-a", help="Calculates the Lindemann-Index for each atom for each frame.",
+        False,
+        "-a",
+        help="Calculates the Lindemann-Index for each atom for each frame.",
     ),
     plot: bool = typer.Option(False, "-p", help="Returns a plot Lindemann-Index vs. Frame."),
     lammpstrj: bool = typer.Option(
@@ -65,7 +70,10 @@ def main(
         help="Prints the version of the lindemann package.",
     ),
     timeit: bool = typer.Option(
-        False, "-ti", "-timeit", help="Uses timeit module to show running time",
+        False,
+        "-ti",
+        "-timeit",
+        help="Uses timeit module to show running time",
     ),
     mem_useage: bool = typer.Option(
         False,

@@ -7,7 +7,6 @@ VERSION := latest
 ifeq ($(STRICT), 1)
 	POETRY_COMMAND_FLAG =
 	PIP_COMMAND_FLAG =
-	SAFETY_COMMAND_FLAG =
 	BANDIT_COMMAND_FLAG =
 	SECRETS_COMMAND_FLAG =
 	BLACK_COMMAND_FLAG =
@@ -17,7 +16,6 @@ ifeq ($(STRICT), 1)
 else
 	POETRY_COMMAND_FLAG = -
 	PIP_COMMAND_FLAG = -
-	SAFETY_COMMAND_FLAG = -
 	BANDIT_COMMAND_FLAG = -
 	SECRETS_COMMAND_FLAG = -
 	BLACK_COMMAND_FLAG = -
@@ -39,12 +37,6 @@ ifeq ($(PIP_STRICT), 1)
 	PIP_COMMAND_FLAG =
 else ifeq ($(PIP_STRICT), 0)
 	PIP_COMMAND_FLAG = -
-endif
-
-ifeq ($(SAFETY_STRICT), 1)
-	SAFETY_COMMAND_FLAG =
-else ifeq ($SAFETY_STRICT), 0)
-	SAFETY_COMMAND_FLAG = -
 endif
 
 ifeq ($(BANDIT_STRICT), 1)
@@ -102,7 +94,7 @@ endif
 check-safety:
 	$(POETRY_COMMAND_FLAG)poetry check
 	$(PIP_COMMAND_FLAG)pip check
-	$(SAFETY_COMMAND_FLAG)poetry run safety check --full-report
+	-poetry run safety check --full-report
 	$(BANDIT_COMMAND_FLAG)poetry run bandit -ll -r lindemann/
 
 .PHONY: check-style
@@ -111,6 +103,12 @@ check-style:
 	$(DARGLINT_COMMAND_FLAG)poetry run darglint -v 2 **/*.py
 	$(ISORT_COMMAND_FLAG)poetry run isort --settings-path pyproject.toml --check-only
 	$(MYPY_COMMAND_FLAG)poetry run mypy --config-file setup.cfg lindemann tests/**/*.py
+
+.PHONY: formatting
+formatting:
+	poetry run pyupgrade --exit-zero-even-if-changed --py37-plus **/*.py
+	poetry run isort --settings-path pyproject.toml ./
+	poetry run black --config pyproject.toml ./
 
 .PHONY: codestyle
 codestyle:
