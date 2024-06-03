@@ -19,9 +19,14 @@ jobs:
         python-version: ${{ matrix.python-version }}
         cache: 'poetry'
 
+    - name: Install Ubuntu-specific dependencies
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libgl1-mesa-dev
+
     - name: Install dependencies
       run: |
-        sudo apt-get update && sudo apt-get install -y libgl1-mesa-dev
         poetry config virtualenvs.in-project true
         poetry install
 
