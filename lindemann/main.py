@@ -1,10 +1,8 @@
 # type: ignore[attr-defined]
 # https://github.com/numba/numba/issues/4713
-from typing import List, Optional
+from typing import List
 
-import random
 import time
-from enum import Enum
 from multiprocessing import Pool
 from pathlib import Path
 
@@ -20,7 +18,7 @@ from lindemann.trajectory import plt_plot, read, save
 app = typer.Typer(
     name="lindemann",
     help="""lindemann is a Python package to calculate the Lindemann index of a LAMMPS trajectory,
-    as well as the progression of the Lindemann index per frame or per atom and frame of 
+    as well as the progression of the Lindemann index per frame or per atom and frame of
     temperature ramps for phase transition analysis.""",
     add_completion=False,
 )
@@ -82,7 +80,6 @@ def main(
         help="Calculates the memory use. Run it before you use any of the cli functionality despite the -t flag",
     ),
 ):
-
     """
     lindemann is a Python package to calculate the Lindemann index of a LAMMPS trajectory, as well
     as the progression of the Lindemann index per frame or per atom and frame of temperature ramps

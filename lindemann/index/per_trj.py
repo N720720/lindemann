@@ -10,7 +10,6 @@ import numpy.typing as npt
 
 @nb.njit(fastmath=True, error_model="numpy")  # type: ignore
 def lindemann_per_atom(frames: npt.NDArray[np.float32]) -> Any:
-
     """Calculate the lindeman index
     Args:
         frames: numpy array of shape(frames,atoms)

@@ -8,7 +8,6 @@ from numba import float32
 
 @nb.njit(fastmath=True, error_model="numpy")  # type: ignore # , cache=True) #(parallel=True)
 def calculate(frames: npt.NDArray[np.float32]) -> npt.NDArray[np.float32]:
-
     """Calculate the contribution of each atom to the lindemann index over the frames
 
     Args:

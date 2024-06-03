@@ -9,7 +9,6 @@ from ovito.modifiers import SelectTypeModifier
 
 
 def frames(trjfile: str, nframes: Optional[int] = None) -> npt.NDArray[np.float64]:
-
     """
     Get the frames from the lammps trajectory using ovito pipeline and import_file function.
     It returns frames and the number of frames to use for calculating the Lindemann Index.

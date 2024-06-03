@@ -7,7 +7,6 @@ import numpy.typing as npt
 
 @nb.njit(fastmath=True, error_model="numpy")  # type: ignore # , cache=True) #(parallel=True)
 def calculate(frames: npt.NDArray[np.float32]) -> npt.NDArray[np.float32]:
-
     """calculate the progression of the lindemann index over the frames.
 
     Args:
