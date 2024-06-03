@@ -7,7 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
         python-version: ["3.9","3.10","3.11"]
 
     steps:
@@ -22,6 +21,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update && sudo apt-get install -y libgl1-mesa-dev
+        poetry config virtualenvs.in-project true
         poetry install
 
     - name: Run safety checks
