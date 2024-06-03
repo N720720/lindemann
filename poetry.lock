@@ -781,6 +781,9 @@ files = [
     {file = "isort-5.13.2.tar.gz", hash = "sha256:48fdfcb9face5d58a4f6dde2e72a1fb8dcaf8ab26f95ab49fab84c2ddefb0109"},
 ]
 
+[package.dependencies]
+colorama = {version = ">=0.4.6", optional = true, markers = "extra == \"colors\""}
+
 [package.extras]
 colors = ["colorama (>=0.4.6)"]
 
@@ -2358,4 +2361,4 @@ test = ["big-O", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more-it
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.13"
-content-hash = "907beb49b9bed273a1e38ea33f0f1473c422b68bbdb2d29dc38987a91ec607de"
+content-hash = "74d42fc14a15301acea394bf8ba5de0f53cea29056f275a609ab77e8518b6874"
