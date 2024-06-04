@@ -31,12 +31,14 @@ jobs:
         poetry install
 
     - name: Run safety checks
-      run: |
-        STRICT=1 make check-safety
+      run: make check-safety
+      env:
+        STRICT: 1
 
     - name: Run style checks
-      run: |
-        STRICT=1 make check-style
+      run: make check-style
+      env:
+        STRICT: 1
 
     - name: Run tests
       run: |

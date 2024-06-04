@@ -109,7 +109,7 @@ mypy:
 
 .PHONY: formatting
 formatting:
-	poetry run pyupgrade --exit-zero-even-if-changed --py37-plus **/*.py
+	poetry run pyupgrade --exit-zero-even-if-changed --py39-plus **/*.py
 	poetry run isort --settings-path pyproject.toml ./
 	poetry run black --config pyproject.toml ./
 
