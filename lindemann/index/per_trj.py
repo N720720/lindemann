@@ -1,6 +1,5 @@
 from typing import Any
 
-import bottleneck as bn
 import numba as nb
 import numpy as np
 import numpy.typing as npt
@@ -62,4 +61,4 @@ def lindemann_per_atom(frames: npt.NDArray[np.float32]) -> Any:
 
 def calculate(frames: npt.NDArray[np.float64]) -> float:
 
-    return np.mean(bn.nanmean(lindemann_per_atom(frames), axis=1))  # type: ignore[no-any-return, no-untyped-call]
+    return np.mean(np.nanmean(lindemann_per_atom(frames), axis=1))  # type: ignore[no-any-return, no-untyped-call]
