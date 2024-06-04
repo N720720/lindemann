@@ -1,7 +1,5 @@
 # type: ignore[attr-defined]
 # https://github.com/numba/numba/issues/4713
-from typing import List
-
 import time
 from multiprocessing import Pool
 from pathlib import Path
@@ -34,7 +32,7 @@ def version_callback(value: bool):
 
 @app.command()
 def main(
-    trjfile: List[Path] = typer.Argument(
+    trjfile: list[Path] = typer.Argument(
         ...,
         help="The trajectory file(s). If no other option is selected, the lindemann index is calculated for the trajectory. \
             Equivalent to the -t option. If you pass more than one trajectory they will be calculated in parallel. \
@@ -107,13 +105,13 @@ def main(
         console.print(
             f"[magenta]lindemann index for the Trajectory:[/] [bold blue]{per_trj.calculate(tjr_frames)}[/]"
         )
-        raise typer.Exit()
+        typer.Exit()
     elif trj and not single_process:
         with Pool(n_cores) as p:
             console.print(f"Using {n_cores} cores")
             res = p.map(per_trj.calculate, tjr_frames)
             console.print(res)
-        raise typer.Exit()
+        typer.Exit()
 
     elif frames and single_process:
         my_file_name = False
@@ -123,19 +121,19 @@ def main(
             filename = "lindemann_per_frame.txt"
         np.savetxt(filename, per_frames.calculate(tjr_frames))
         console.print(f"[magenta]lindemann index per frame saved as:[/] [bold blue]{filename}[/]")
-        raise typer.Exit()
+        typer.Exit()
     elif frames and not single_process:
         print("multiprocessing is implemented only for the -t flag")
-        raise typer.Exit()
+        typer.Exit()
 
     elif atoms and single_process:
         filename = "lindemann_per_atom.txt"
         np.savetxt(filename, per_atoms.calculate(tjr_frames))
         console.print(f"[magenta]lindemann index per atoms saved as:[/] [bold blue]{filename}[/]")
-        raise typer.Exit()
+        typer.Exit()
     elif atoms and not single_process:
         print("multiprocessing is implemented only for the -t flag")
-        raise typer.Exit()
+        typer.Exit()
 
     elif plot and single_process:
         indices = per_frames.calculate(tjr_frames)
@@ -143,19 +141,19 @@ def main(
         console.print(
             f"[magenta]Saved file as:[/] [bold blue]{plt_plot.lindemann_vs_frames(indices)}[/]"
         )
-        raise typer.Exit()
+        typer.Exit()
     elif plot and not single_process:
         print("multiprocessing is implemented only for the -t flag")
-        raise typer.Exit()
+        typer.Exit()
 
     elif lammpstrj and single_process:
         indices_per_atom = per_atoms.calculate(tjr_frames)
 
         console.print(f"[magenta]{save.to_lammps(str(trjfile[0]),indices_per_atom)}[/]")
-        raise typer.Exit()
+        typer.Exit()
     elif lammpstrj and not single_process:
         print("multiprocessing is implemented only for the -t flag")
-        raise typer.Exit()
+        typer.Exit()
 
     elif timeit and single_process:
         # we use float32 here since float64 is not needed for my purposes and it enables us to use nb fastmath. Change to np.float64 if you need more precision.
@@ -166,29 +164,29 @@ def main(
         console.print(
             f"[magenta]lindemann index for the Trajectory:[/] [bold blue]{linde_for_time}[/] \n[magenta]Runtime:[/] [bold green]{time_diff}[/]"
         )
-        raise typer.Exit()
+        typer.Exit()
     elif timeit and not single_process:
         print("multiprocessing is implemented only for the -t flag")
-        raise typer.Exit()
+        typer.Exit()
 
     elif mem_useage and single_process:
 
         mem_use_in_gb = mem_use.in_gb(tjr_frames)
 
         console.print(f"[magenta]memory use:[/] [bold blue]{mem_use_in_gb}[/]")
-        raise typer.Exit()
+        typer.Exit()
     elif mem_useage and not single_process:
         print("multiprocessing is implemented only for the -t flag")
-        raise typer.Exit()
+        typer.Exit()
     else:
         if single_process:
             console.print(
                 f"[magenta]lindemann index for the Trajectory:[/] [bold blue]{per_trj.calculate(tjr_frames)}[/]"
             )
-            raise typer.Exit()
+            typer.Exit()
         elif not single_process:
             with Pool(n_cores) as p:
                 console.print(f"Using {n_cores} cores")
                 res = p.map(per_trj.calculate, tjr_frames)
                 console.print(res)
-            raise typer.Exit()
+            typer.Exit()
