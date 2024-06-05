@@ -17,14 +17,20 @@ repository = "https://github.com/N720720/lindemann"
 homepage = "https://github.com/N720720/lindemann"
 
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
-keywords = []  # Update me
+keywords = ["Molecular Dynamics", "Cheminformatics","Lindemann", "Lindemann Index","Cheminformatics", "Phase transition"]
 
 # Pypi classifiers: https://pypi.org/classifiers/
-classifiers = [  # Update me
-  "Development Status :: 3 - Alpha",
-  "Intended Audience :: Developers",
-  "Operating System :: OS Independent",
-  "Topic :: Software Development :: Libraries :: Python Modules",
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Operating System :: POSIX :: Linux",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: MacOS :: MacOS X",
+  "Topic :: Scientific/Engineering :: Chemistry",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+  "Topic :: Scientific/Engineering :: Physics",
+  "Programming Language :: Python :: 3",
+
 ]
 
 [tool.poetry.scripts]

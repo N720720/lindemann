@@ -14,12 +14,12 @@
 
 ![](images/459_Atoms_brass.gif)
 
-lindemann is a Python package to calculate the Lindemann index of a LAMMPS trajectory, as well as the progression of the Lindemann index per frame or per atom and frame of temperature ramps for phase transition analysis.
+lindemann is a Python package to calculate the Lindemann index of Molecular Dynamics simulation trajectorys, as well as the progression of the Lindemann index per frame or per atom and frame of temperature ramps for phase transition analysis.
 </div>
 
 ## Installation
 
-It requires python 3.7
+It requires python >=3.9,<3.12
 
 ```bash
 pip install lindemann

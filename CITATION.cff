@@ -1,0 +1,28 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: lindemann
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Sebastian
+    family-names: Thurm
+    email: s.thurm@protonmail.com
+repository-code: 'https://github.com/N720720/lindemann'
+repository-artifact: 'https://pypi.org/project/lindemann/'
+abstract: >-
+  lindemann is a Python package to calculate the Lindemann
+  index of Molecular Dynamics simulation trajectorys, as
+  well as the progression of the Lindemann index per frame
+  or per atom and frame of temperature ramps for phase
+  transition analysis.
+keywords:
+  - Molecular Dynamics
+  - Cheminformatics
+  - Lindemann
+  - Lindemann Index
+  - Phase transition
+license: GPL-3.0-or-later
