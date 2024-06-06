@@ -12,11 +12,11 @@ from lindemann.trajectory import read
     [
         (
             "tests/test_example/459_01.lammpstrj",
-            np.round(float(0.025923892565654555), 12),
+            0.025923892565654555,
         ),
         (
             "tests/test_example/459_02.lammpstrj",
-            np.round(float(0.026426709832984754), 12),
+            0.026426709832984754,
         ),
     ],
 )
@@ -26,7 +26,7 @@ from lindemann.trajectory import read
 def test_tra(trajectory, lindemannindex):
     """Example test with parametrization."""
     frame = read.frames(trajectory)
-    assert np.round(per_trj.calculate(frame), 12) == lindemannindex
+    assert np.isclose(per_trj.calculate(frame), lindemannindex)
 
 
 @pytest.mark.parametrize(
@@ -34,11 +34,11 @@ def test_tra(trajectory, lindemannindex):
     [
         (
             "tests/test_example/459_01.lammpstrj",
-            np.round(float(0.025923892565654555), 12),
+            0.025923892565654555,
         ),
         (
             "tests/test_example/459_02.lammpstrj",
-            np.round(float(0.026426709832984754), 12),
+            0.026426709832984754,
         ),
     ],
 )
@@ -46,7 +46,7 @@ def test_frames(trajectory, lindemannindex):
     """Example test with parametrization."""
     frame = read.frames(trajectory)
     test_array = per_frames.calculate(frame)
-    assert np.round(test_array[-1], 12) == lindemannindex
+    assert np.isclose(test_array[-1], lindemannindex)
 
 
 @pytest.mark.parametrize(
@@ -60,9 +60,9 @@ def test_frames_middle(trajectory):
     """Example test with parametrization."""
     frame = read.frames(trajectory)
     test_array = per_frames.calculate(frame)
-    linde_from_200_trj = np.round(per_trj.calculate(frame[0:201]), 12)
-    linde_at_200_per_frames = np.round(test_array[200], 12)
-    assert linde_at_200_per_frames == linde_from_200_trj
+    linde_from_200_trj = per_trj.calculate(frame[0:201])
+    linde_at_200_per_frames = test_array[200]
+    assert np.isclose(linde_at_200_per_frames, linde_from_200_trj)
 
 
 @pytest.mark.parametrize(
@@ -70,18 +70,18 @@ def test_frames_middle(trajectory):
     [
         (
             "tests/test_example/459_01.lammpstrj",
-            np.round(float(0.025923892565654555), 12),
+            0.025923892565654555,
         ),
         (
             "tests/test_example/459_02.lammpstrj",
-            np.round(float(0.026426709832984754), 12),
+            0.026426709832984754,
         ),
     ],
 )
 def test_atoms(trajectory, lindemannindex):
     """Example test with parametrization."""
     frame = read.frames(trajectory)
-    assert np.round(np.mean(per_atoms.calculate(frame)[-1]), 12) == lindemannindex
+    assert np.isclose(np.mean(per_atoms.calculate(frame)[-1]), lindemannindex)
 
 
 @pytest.mark.parametrize(
@@ -95,6 +95,6 @@ def test_atoms_middle(trajectory):
     """Example test with parametrization."""
     frame = read.frames(trajectory)
     per_atoms_frame_at_200 = per_atoms.calculate(frame)[200]
-    lindeman_at_200_frame = np.round(np.mean(per_atoms_frame_at_200), 12)
-    lindeman_from_200_trj = np.round(per_trj.calculate(frame[0:201]), 12)
-    assert lindeman_at_200_frame == lindeman_from_200_trj
+    lindeman_at_200_frame = np.mean(per_atoms_frame_at_200)
+    lindeman_from_200_trj = per_trj.calculate(frame[0:201])
+    assert np.isclose(lindeman_at_200_frame, lindeman_from_200_trj)
