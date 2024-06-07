@@ -2,15 +2,34 @@ import numpy as np
 import numpy.typing as npt
 
 
-def in_gb(frames: npt.NDArray[np.float64]) -> str:
-    """Shows the size of the array in memory in GB.
+def in_gb(nframes: int, natoms: int) -> str:
+    """
+    Calculates and shows the size of the memory allocations related to
+    the different flag options in gigabytes (GB).
 
     Args:
-        frames (npt.NDArray[np.float64]): numpy array of shape(frames,atoms)
+        nframes (int): The number of frames in the trajectory.
+        natoms (int): The number of atoms per frame in the trajectory.
 
     Returns:
-        str: Size of array in GB.
+        str: A formatted string containing the memory usage for different configurations:
+             - per_trj: Memory required when the `-t` flag is used.
+             - per_frames: Memory required when the `-f` flag is used.
+             - per_atoms: Memory required when the `-a` flag is used.
+
+    This function assumes memory calculations based on numpy's float32 data type.
     """
-    natoms = len(frames[0])
-    nframes = len(frames)
-    return f"This will use {np.round((np.zeros((natoms, natoms)).nbytes/1024**3),4)} GB"  # type: ignore[no-untyped-call]
+
+    num_distances = natoms * (natoms - 1) // 2
+    float_size = np.float32().nbytes
+    trj = nframes * natoms * 3 * float_size
+    atom_atom_array = 3 * natoms * natoms * float_size
+    atom_array = natoms * float_size
+    linde_index = nframes * natoms * float_size
+    sum_bytes = trj + atom_atom_array + atom_array + linde_index
+    per_trj = (
+        f"\nFlag -t (per_trj) will use {np.round((trj+num_distances*2*float_size)/1024**3,4)} GB\n"
+    )
+    per_frames = f"Flag -f (per_frames) will use {np.round((trj+(num_distances*2*float_size)+(nframes*float_size))/1024**3,4)} GB\n"
+    per_atoms = f"Flag -a (per_atoms) will use {np.round(sum_bytes/1024**3,4)} GB"
+    return f"{per_trj}{per_frames}{per_atoms}"
