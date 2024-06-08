@@ -156,9 +156,8 @@ def main(
         typer.Exit()
 
     elif timeit and single_process:
-        # we use float32 here since float64 is not needed for my purposes and it enables us to use nb fastmath. Change to np.float64 if you need more precision.
         start = time.time()
-        linde_for_time = per_trj.calculate(tjr_frames.astype(np.float32))
+        linde_for_time = per_trj.calculate(tjr_frames)
         time_diff = time.time() - start
 
         console.print(
@@ -170,8 +169,8 @@ def main(
         typer.Exit()
 
     elif mem_useage and single_process:
-
-        mem_use_in_gb = mem_use.in_gb(tjr_frames)
+        nframes, natoms, _ = tjr_frames.shape
+        mem_use_in_gb = mem_use.in_gb(nframes, natoms)
 
         console.print(f"[magenta]memory use:[/] [bold blue]{mem_use_in_gb}[/]")
         typer.Exit()

@@ -1,21 +1,36 @@
 from typing import Optional
 
-import os
-
 import numpy as np
 import numpy.typing as npt
 from ovito.io import import_file
 from ovito.modifiers import SelectTypeModifier
 
 
-def frames(trjfile: str, nframes: Optional[int] = None) -> npt.NDArray[np.float64]:
+def frames(trjfile: str, nframes: Optional[int] = None) -> npt.NDArray[np.float32]:
     """
-    Get the frames from the lammps trajectory using ovito pipeline and import_file function.
-    It returns frames and the number of frames to use for calculating the Lindemann Index.
-    """
+    Extracts the frame position data from a MD trajectory file using the OVITO pipeline.
 
-    if not os.path.exists(trjfile):
-        raise RuntimeError(f"Error: file {trjfile} not found!")
+    The function loads the specified trajectory file, applies a selection modifier to filter
+    particles of type 1, 2, and 3, and computes the positions for a specified number of frames.
+    If `nframes` is None, the function will attempt to process all frames in the trajectory.
+
+    Parameters:
+        trjfile (str): Path to the trajectory file to be processed.
+        nframes (Optional[int]): The number of frames to process. If not specified, all frames
+                                 in the trajectory file are processed. If the specified number
+                                 exceeds the available frames in the file, a ValueError is raised.
+
+    Returns:
+        npt.NDArray[np.float32]: A 3D NumPy array of shape (nframes, num_particles, 3) containing
+                                 the position data for each particle across the specified frames.
+
+    Raises:
+        ValueError: If `nframes` is more than the number of available frames in the trajectory file.
+
+    Example:
+        >>> positions = frames("path/to/trajectory.lammpstrj", 100)
+        This would load 100 frames from the specified file and return the position data.
+    """
 
     pipeline = import_file(trjfile, sort_particles=True)
     num_frame = pipeline.source.num_frames
@@ -25,14 +40,12 @@ def frames(trjfile: str, nframes: Optional[int] = None) -> npt.NDArray[np.float6
     data = pipeline.compute()
     num_particle = data.particles.count
 
-    # If no argument is given use all frames
     if nframes is None:
         nframes = num_frame
-    # make sure nobody puts more frames then exists
-    assert num_frame >= nframes
+    elif nframes > num_frame:
+        raise ValueError(f"Requested {nframes} frames, but only {num_frame} frames are available.")
 
-    # initialise array, could be problematic for big clusters and a lot of frames
-    position = np.zeros((nframes, num_particle, 3))
+    position = np.zeros((nframes, num_particle, 3), dtype=np.float32)
 
     for frame in range(nframes):
         data = pipeline.compute(frame)

@@ -38,14 +38,14 @@ def test_a_p_flags():
 
 def test_t_flag():
     flag = "-t"
-    res_str = "lindemann index for the Trajectory: 0.0264267"
+    res_str = "lindemann index for the Trajectory: 0.026426"
     trajectory = ["tests/test_example/459_02.lammpstrj"]
     single_process_and_multiprocess(trajectory, flag, res_str)
 
 
 def test_m_flag():
     flag = "-m"
-    res_str = "memory use: This will use 0.0016 GB"
+    res_str = "memory use: \nFlag -t (per_trj) will use 0.0034 GB\nFlag -f (per_frames) will use 0.0034 GB\nFlag -a (per_atoms) will use 0.0058 GB\n"
     trajectory = ["tests/test_example/459_02.lammpstrj"]
     single_process_and_multiprocess(trajectory, flag, res_str)
 
@@ -53,7 +53,7 @@ def test_m_flag():
 def test_none_flag():
     result = runner.invoke(app, ["tests/test_example/459_02.lammpstrj"])
     assert result.exit_code == 0
-    assert "lindemann index for the Trajectory: 0.0264267" in result.stdout
+    assert "lindemann index for the Trajectory: 0.026426" in result.stdout
 
 
 def test_none_flag_multi():
@@ -61,5 +61,5 @@ def test_none_flag_multi():
         app, ["tests/test_example/459_01.lammpstrj", "tests/test_example/459_02.lammpstrj"]
     )
     assert result.exit_code == 0
-    assert "0.0259238" in result.stdout
-    assert "0.0264267" in result.stdout
+    assert "0.025923" in result.stdout
+    assert "0.026426" in result.stdout
