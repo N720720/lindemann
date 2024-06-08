@@ -3,11 +3,12 @@ import time
 import numpy as np
 
 from lindemann.index import per_atoms, per_frames, per_trj
+from lindemann.index.mem_use import in_gb
 
 
 def generate_test_data(num_frames, num_atoms):
     rng = np.random.default_rng(seed=42)
-    return rng.random((num_frames, num_atoms, 3)).astype(np.float32)
+    return rng.random((num_frames, num_atoms, 3), dtype=np.float32)
 
 
 def benchmark(function, positions, iterations=3):
@@ -24,6 +25,7 @@ def benchmark(function, positions, iterations=3):
 def main():
     num_frames = 5000
     num_atoms = 1103
+    print(in_gb(num_frames, num_atoms))
     positions = generate_test_data(num_frames, num_atoms)
     iterations = 1
 
