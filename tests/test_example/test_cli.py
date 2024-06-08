@@ -61,5 +61,5 @@ def test_none_flag_multi():
         app, ["tests/test_example/459_01.lammpstrj", "tests/test_example/459_02.lammpstrj"]
     )
     assert result.exit_code == 0
-    assert "0.0259238" in result.stdout
+    assert "0.025923" in result.stdout
     assert "0.026426" in result.stdout

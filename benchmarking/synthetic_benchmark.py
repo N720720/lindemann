@@ -12,7 +12,7 @@ def generate_test_data(num_frames, num_atoms):
 
 
 def benchmark(function, positions, iterations=3):
-    index = function(positions)  # Warm-up
+    index = function(generate_test_data(10, 10))  # Warm-up
     times = []
     for _ in range(iterations):
         start_time = time.time()
@@ -27,7 +27,7 @@ def main():
     num_atoms = 1103
     print(in_gb(num_frames, num_atoms))
     positions = generate_test_data(num_frames, num_atoms)
-    iterations = 1
+    iterations = 3
 
     mean_time, std_time, index = benchmark(per_trj.calculate, positions, iterations=iterations)
     print(f"Mean time of {iterations} runs: {mean_time:.6f} s ± {std_time:.6f} s")
