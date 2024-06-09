@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from lindemann.index import per_atoms, per_frames, per_trj
+from lindemann.index import online_trj, per_atoms, per_frames, per_trj
 from lindemann.trajectory import read
 
 "Testing the individal parts of the index module, its possible to change the test setup for individual modules"
@@ -20,13 +20,29 @@ from lindemann.trajectory import read
         ),
     ],
 )
-# def test_setup(trajectory: str, lindemannindex: float) -> bool:
-
-
 def test_tra(trajectory, lindemannindex):
     """Example test with parametrization."""
     frame = read.frames(trajectory)
     assert np.isclose(per_trj.calculate(frame), lindemannindex)
+
+
+@pytest.mark.parametrize(
+    ("trajectory", "lindemannindex"),
+    [
+        (
+            "tests/test_example/459_01.lammpstrj",
+            0.025923892565654555,
+        ),
+        (
+            "tests/test_example/459_02.lammpstrj",
+            0.026426709832984754,
+        ),
+    ],
+)
+def test_online_tra(trajectory, lindemannindex):
+    """Example test with parametrization."""
+    pipeline, data = read.trajectory(trajectory)
+    assert np.isclose(online_trj.calculate(pipeline, data), lindemannindex)
 
 
 @pytest.mark.parametrize(

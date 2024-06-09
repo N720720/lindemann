@@ -45,7 +45,7 @@ def test_t_flag():
 
 def test_m_flag():
     flag = "-m"
-    res_str = "memory use: \nFlag -t (per_trj) will use 0.0034 GB\nFlag -f (per_frames) will use 0.0034 GB\nFlag -a (per_atoms) will use 0.0058 GB\n"
+    res_str = "memory use: \nFlag -t (per_trj) will use 0.0034 GB\n\nFlag -ot (per_trj) will use 0.0008 GB\nFlag -f (per_frames) will use 0.0034 GB\nFlag -a (per_atoms) will use 0.0058 GB\n"
     trajectory = ["tests/test_example/459_02.lammpstrj"]
     single_process_and_multiprocess(trajectory, flag, res_str)
 
