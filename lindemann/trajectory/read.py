@@ -1,9 +1,12 @@
 from typing import Optional
 
+import numba as nb
 import numpy as np
 import numpy.typing as npt
 from ovito.io import import_file
 from ovito.modifiers import SelectTypeModifier
+
+from lindemann.index import per_trj
 
 
 def frames(trjfile: str, nframes: Optional[int] = None) -> npt.NDArray[np.float32]:
@@ -53,3 +56,13 @@ def frames(trjfile: str, nframes: Optional[int] = None) -> npt.NDArray[np.float3
     frames = position
 
     return frames
+
+
+def trajectory(trjfile: str, nframes: Optional[int] = None):
+
+    pipeline = import_file(trjfile, sort_particles=True)
+    pipeline.modifiers.append(
+        SelectTypeModifier(operate_on="particles", property="Particle Type", types={1, 2, 3})
+    )
+    data = pipeline.compute()
+    return pipeline, data

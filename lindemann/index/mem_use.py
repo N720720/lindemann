@@ -30,6 +30,9 @@ def in_gb(nframes: int, natoms: int) -> str:
     per_trj = (
         f"\nFlag -t (per_trj) will use {np.round((trj+num_distances*2*float_size)/1024**3,4)} GB\n"
     )
+    online_per_trj = (
+        f"\nFlag -ot (per_trj) will use {np.round((num_distances*2*float_size)/1024**3,4)} GB\n"
+    )
     per_frames = f"Flag -f (per_frames) will use {np.round((trj+(num_distances*2*float_size)+(nframes*float_size))/1024**3,4)} GB\n"
     per_atoms = f"Flag -a (per_atoms) will use {np.round(sum_bytes/1024**3,4)} GB"
-    return f"{per_trj}{per_frames}{per_atoms}"
+    return f"{per_trj}{online_per_trj}{per_frames}{per_atoms}"

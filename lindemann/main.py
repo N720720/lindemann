@@ -10,7 +10,7 @@ from psutil import cpu_count
 from rich.console import Console
 
 from lindemann import __version__
-from lindemann.index import mem_use, per_atoms, per_frames, per_trj
+from lindemann.index import mem_use, online_trj, per_atoms, per_frames, per_trj
 from lindemann.trajectory import plt_plot, read, save
 
 app = typer.Typer(
@@ -42,6 +42,11 @@ def main(
         False,
         "-t",
         help="Calculates the Lindemann-Index for the Trajectory file(s)",
+    ),
+    on_trj: bool = typer.Option(
+        False,
+        "-ot",
+        help="Calculates the Lindemann-Index for the Trajectory file(s) (reduced memory usage)",
     ),
     frames: bool = typer.Option(
         False, "-f", help="Calculates the Lindemann-Index for each frame."
@@ -100,7 +105,12 @@ def main(
         trjfile = [str(trjf) for trjf in trjfile]
         tjr_frames = [read.frames(tf) for tf in trjfile]
 
-    if trj and single_process:
+    if on_trj and single_process:
+        pipeline, data = read.trajectory(str(trjfile[0]))
+        linde = online_trj.calculate(pipeline, data)
+        console.print(f"[magenta]lindemann index for the Trajectory:[/] [bold blue]{linde}[/]")
+        typer.Exit()
+    elif trj and single_process:
 
         console.print(
             f"[magenta]lindemann index for the Trajectory:[/] [bold blue]{per_trj.calculate(tjr_frames)}[/]"
