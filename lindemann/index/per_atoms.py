@@ -1,9 +1,6 @@
-from typing import List
-
 import numba as nb
 import numpy as np
 import numpy.typing as npt
-from numba import float32
 
 
 @nb.njit(fastmath=True, error_model="numpy")  # type: ignore # , cache=True) #(parallel=True)

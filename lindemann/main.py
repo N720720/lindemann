@@ -8,7 +8,15 @@ from psutil import cpu_count
 from rich.console import Console
 
 from lindemann import __version__
-from lindemann.index import mem_use, online_frames, online_trj, per_atoms, per_frames, per_trj
+from lindemann.index import (
+    mem_use,
+    online_atoms,
+    online_frames,
+    online_trj,
+    per_atoms,
+    per_frames,
+    per_trj,
+)
 from lindemann.trajectory import plt_plot, read, save
 
 app = typer.Typer(
@@ -52,6 +60,11 @@ def main(
     ),
     atoms: bool = typer.Option(
         False, "-a", help="Calculates the Lindemann-Index for each atom for each frame."
+    ),
+    on_atoms: bool = typer.Option(
+        False,
+        "-oa",
+        help="Calculates the Lindemann-Index for each atom for each frame. (reduced memory usage)",
     ),
     plot: bool = typer.Option(False, "-p", help="Returns a plot Lindemann-Index vs. Frame."),
     lammpstrj: bool = typer.Option(
@@ -144,6 +157,13 @@ def main(
             trjfile_str[0], per_atoms.calculate, "lindemann_index_per_atom.txt", np.savetxt
         )
     elif atoms and not single_process:
+        console.print("multiprocessing is implemented only for the -t flag")
+        typer.Exit()
+    elif on_atoms and single_process:
+        calculate_single_pipeline(
+            read.trajectory, online_atoms.calculate, "lindemann_index_per_atoms.txt", np.savetxt
+        )
+    elif on_atoms and not single_process:
         console.print("multiprocessing is implemented only for the -t flag")
         typer.Exit()
     elif plot and single_process:
