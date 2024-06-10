@@ -23,7 +23,7 @@ def in_gb(nframes: int, natoms: int) -> str:
     num_distances = natoms * (natoms - 1) // 2
     float_size = np.float32().nbytes
     trj = nframes * natoms * 3 * float_size
-    atom_atom_array = 3 * natoms * natoms * float_size
+    atom_atom_array = 2 * natoms * natoms * float_size
     atom_array = natoms * float_size
     linde_index = nframes * natoms * float_size
     sum_bytes = trj + atom_atom_array + atom_array + linde_index
@@ -35,5 +35,6 @@ def in_gb(nframes: int, natoms: int) -> str:
     )
     per_frames = f"Flag -f (per_frames) will use {np.round((trj+(num_distances*2*float_size)+(nframes*float_size))/1024**3,4)} GB\n"
     online_per_frames = f"Flag -of (per_frames) will use {np.round(((num_distances*2*float_size)+(nframes*float_size))/1024**3,4)} GB\n"
-    per_atoms = f"Flag -a (per_atoms) will use {np.round(sum_bytes/1024**3,4)} GB"
-    return f"{per_trj}{online_per_trj}{per_frames}{online_per_frames}{per_atoms}"
+    per_atoms = f"Flag -a (per_atoms) will use {np.round((sum_bytes)/1024**3,4)} GB\n"
+    online_per_atoms = f"Flag -oa (per_atoms) will use {np.round((sum_bytes-trj)/1024**3,4)} GB"
+    return f"{per_trj}{online_per_trj}{per_frames}{online_per_frames}{per_atoms}{online_per_atoms}"
