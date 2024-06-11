@@ -1,9 +1,21 @@
+from typing import Any
+
 import numba as nb
 import numpy as np
+import numpy.typing as npt
 
 
 @nb.njit(fastmath=True)
-def calculate(positions):
+def calculate(positions: npt.NDArray[np.float32]) -> np.floating[Any]:
+    """
+    Calculates the overall Lindemann index for a series of atomic positions over multiple frames.
+
+    Args:
+        positions (npt.NDArray[np.float32]): Array of atomic positions with shape (num_frames, num_atoms, 3).
+
+    Returns:
+        np.floating[np.Any]: The overall Lindemann index.
+    """
     num_frames, num_atoms, _ = positions.shape
     num_distances = num_atoms * (num_atoms - 1) // 2
 

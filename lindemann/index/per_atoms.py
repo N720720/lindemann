@@ -1,19 +1,20 @@
-from typing import List
-
 import numba as nb
 import numpy as np
 import numpy.typing as npt
-from numba import float32
 
 
-@nb.njit(fastmath=True, error_model="numpy")  # type: ignore # , cache=True) #(parallel=True)
+@nb.njit(fastmath=True, parallel=False)
 def calculate(frames: npt.NDArray[np.float32]) -> npt.NDArray[np.float32]:
-    """Calculate the contribution of each atom to the lindemann index over the frames
+    """
+    Calculate the contribution of each atom to the Lindemann index over the frames.
 
     Args:
-        frames: numpy array of shape(frames,atoms)
+        frames (npt.NDArray[np.float32]): A numpy array of shape (frames, atoms, 3) containing the atomic positions
+                                          over multiple frames.
+
     Returns:
-        npt.NDArray[np.float32]: Returns 1D array with the progression of the lindeman index per frame of shape(frames, atoms)
+        npt.NDArray[np.float32]: A 2D array of shape (frames, atoms) containing the progression of the Lindemann index
+                                 per frame.
     """
     len_frames, natoms, _ = frames.shape
 
