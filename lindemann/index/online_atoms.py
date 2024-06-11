@@ -7,16 +7,27 @@ from ovito.data import DataCollection
 from ovito.pipeline import Pipeline
 
 
-@nb.njit(fastmath=True, error_model="numpy")  # type: ignore # , cache=True) #(parallel=True)
-def calculate_frame(positions, array_mean, array_var, frame, natoms) -> npt.NDArray[np.float32]:
-    """Calculate the contribution of each atom to the lindemann index over the frames
+@nb.njit(fastmath=True, parallel=False)
+def calculate_frame(
+    positions: npt.NDArray[np.float32],
+    array_mean: npt.NDArray[np.float32],
+    array_var: npt.NDArray[np.float32],
+    frame: int,
+    natoms: int,
+) -> npt.NDArray[np.float32]:
+    """
+    Calculates the contribution of the individual atomic positions to the Lindemann Index for a specific frame.
 
     Args:
-        frames: numpy array of shape(frames,atoms)
-    Returns:
-        npt.NDArray[np.float32]: Returns 1D array with the progression of the lindeman index per frame of shape(frames, atoms)
-    """
+        positions (npt.NDArray[np.float32]): Array of atomic positions for the current frame.
+        array_mean (npt.NDArray[np.float32]): Array to store the mean distances.
+        array_var (npt.NDArray[np.float32]): Array to store the variance of distances.
+        frame (int): The current frame index.
+        natoms (int): The number of atoms.
 
+    Returns:
+        npt.NDArray[np.float32]: Array of the individual atomic contributions to the Lindemann indices for the current frame.
+    """
     frame_count = frame + 1
     for i in range(natoms):
         for j in range(i + 1, natoms):
@@ -46,7 +57,23 @@ def calculate_frame(positions, array_mean, array_var, frame, natoms) -> npt.NDAr
     return lindemann_indices
 
 
-def calculate(pipeline: Pipeline, data: DataCollection, nframes: Optional[int] = None):
+def calculate(
+    pipeline: Pipeline, data: DataCollection, nframes: Optional[int] = None
+) -> npt.NDArray[np.float32]:
+    """
+    Calculates the contribution of the individual atomic positions to the Lindemann Index for a series of frames from an OVITO pipeline.
+
+    Args:
+        pipeline (Pipeline): The OVITO pipeline object.
+        data (DataCollection): The data collection object from OVITO.
+        nframes (Optional[int]): The number of frames to process. If None, all frames are processed.
+
+    Returns:
+        npt.NDArray[np.float32]: Array of the individual atomic contributions to the Lindemann indices for each frame.
+
+    Raises:
+        ValueError: If the requested number of frames exceeds the available frames in the pipeline.
+    """
     num_particle = data.particles.count
     num_frame = pipeline.source.num_frames
     if nframes is None:

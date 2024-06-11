@@ -6,7 +6,7 @@ import numpy.typing as npt
 mpl.use("Agg")
 
 
-def lindemann_vs_frames(indices: npt.NDArray[np.float64]) -> str:
+def lindemann_vs_frames(indices: npt.NDArray[np.float32]) -> str:
     plt.figure(1)
     plt.title("Lindemann index per frame")
     plt.xlabel("Frames")

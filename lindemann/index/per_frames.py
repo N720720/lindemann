@@ -1,9 +1,19 @@
 import numba as nb
 import numpy as np
+import numpy.typing as npt
 
 
 @nb.njit(fastmath=True, parallel=False)
-def calculate(positions):
+def calculate(positions: npt.NDArray[np.float32]):
+    """
+    Calculates the Lindemann index for each frame of atomic positions.
+
+    Args:
+        positions (npt.NDArray[np.float32]): Array of atomic positions with shape (num_frames, num_atoms, 3).
+
+    Returns:
+        npt.NDArray[np.float32]: Array of Lindemann indices for each frame.
+    """
     num_frames, num_atoms, _ = positions.shape
     num_distances = num_atoms * (num_atoms - 1) // 2
 
