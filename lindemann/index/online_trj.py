@@ -74,7 +74,6 @@ def calculate(
     num_distances = num_particle * (num_particle - 1) // 2
     mean_distances = np.zeros(num_distances, dtype=np.float32)
     m2_distances = np.zeros(num_distances, dtype=np.float32)
-    print(nframes, num_particle)
     for frame in range(nframes):
         data = pipeline.compute(frame)
         calculate_frame(

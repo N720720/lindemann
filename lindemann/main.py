@@ -1,3 +1,4 @@
+import re
 import time
 from multiprocessing import Pool
 from pathlib import Path
@@ -13,6 +14,7 @@ from lindemann.index import (
     online_atoms,
     online_frames,
     online_trj,
+    parallel_trj,
     per_atoms,
     per_frames,
     per_trj,
@@ -51,6 +53,11 @@ def main(
         False,
         "-ot",
         help="Calculates the Lindemann-Index for the Trajectory file(s) (reduced memory usage)",
+    ),
+    par_trj: bool = typer.Option(
+        False,
+        "-pt",
+        help="Calculates the Lindemann-Index for the Trajectory file(s) in parallel.",
     ),
     frames: bool = typer.Option(
         False, "-f", help="Calculates the Lindemann-Index for each frame."
@@ -112,9 +119,12 @@ def main(
             )
         typer.Exit()
 
-    def calculate_single(trjfile, calc_func, save_filename=None, save_func=None):
+    def calculate_single(trjfile, calc_func, save_filename=None, save_func=None, cpu_count=None):
         frames = read.frames(trjfile)
-        results = calc_func(frames)
+        if cpu_count:
+            results = calc_func(frames, cpu_count)
+        else:
+            results = calc_func(frames)
         if save_filename and save_func:
             save_func(save_filename, results)
             console.print(f"[magenta]Lindemann index saved as:[/] [bold blue]{save_filename}[/]")
@@ -136,6 +146,8 @@ def main(
         calculate_single_pipeline(read.trajectory, online_trj.calculate)
     elif trj and single_process:
         calculate_single(trjfile_str[0], per_trj.calculate)
+    elif par_trj and single_process:
+        calculate_single(trjfile_str[0], parallel_trj.calculate, cpu_count=cpu_count())
     elif trj and not single_process:
         calculate_parallel(trjfile_str, per_trj.calculate)
     elif frames and single_process:
